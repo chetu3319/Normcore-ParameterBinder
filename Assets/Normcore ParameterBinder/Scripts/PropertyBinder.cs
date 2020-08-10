@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Reflection; 
+using System.Reflection;
+using UnityEngine.Assertions.Must;
 
 
 //
@@ -184,6 +185,19 @@ public sealed class FloatValuePropertyBinder : GenericFloatPropertyBinder<float>
     protected override float OnGetLevel()
     {
         return TargetProperty; 
+    }
+}
+
+public sealed class Vector3ValuePropertyBinderFloat : GenericFloatPropertyBinder<Vector3>
+{
+    protected override void OnSetLevel(float level)
+    {
+        TargetProperty = new Vector3(level,level,level);
+    }
+
+    protected override float OnGetLevel()
+    {
+        return TargetProperty.x; 
     }
 }
 

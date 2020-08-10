@@ -40,6 +40,18 @@ sealed class PropertyBinderEditor
            //  CreateNewPropertyBinderMenu(_datatype).DropDown(rect);
              //OnAddNewPropertyBinder<FloatValuePropertyBinder>();
              CreateNewProprtyBinder(_datatype);
+             switch (_datatype)        
+             {
+                 case "bool": 
+                     OnAddNewPropertyBinder<BoolValuePropertyBinder>();
+                     break;
+                 case "float":
+                     CreateFloatPropertyBinderMenu().DropDown(rect);
+                     break;
+                 case "Vector3":
+                     OnAddNewPropertyBinder<Vector3ValuePropertyBinder>();
+                     break;
+             }
             
         }
 
@@ -87,6 +99,18 @@ sealed class PropertyBinderEditor
        
         return menu;
     }
+    
+    GenericMenu CreateFloatPropertyBinderMenu()
+    {
+        var menu = new GenericMenu();
+        
+
+        AddNewPropertyBinderItem<FloatValuePropertyBinder>(menu);
+        AddNewPropertyBinderItem<Vector3ValuePropertyBinderFloat>(menu);
+        
+       
+        return menu;
+    }
 
     public void AddNewPropertyBinderItem<T>(GenericMenu menu) where T : new()
       => menu.AddItem(PropertyBinderTypeLabel<T>.Content,
@@ -110,6 +134,8 @@ sealed class PropertyBinderEditor
                 OnAddNewPropertyBinder<BoolValuePropertyBinder>();
                 break;
             case "float":
+                var menu = new GenericMenu();
+                
                 OnAddNewPropertyBinder<FloatValuePropertyBinder>();
                 break;
             case "Vector3":
