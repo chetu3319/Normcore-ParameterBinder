@@ -176,6 +176,7 @@ public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
     }
 
     UnityAction<T> _setterCache;
+    
 
     private static object GetProperty(Component inObj, string fieldName)
     {
@@ -189,6 +190,7 @@ public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
             ret = info.GetValue(inObj);
         return ret;
     }
+    
     void SetTargetProperty(T value)
     {
         if (_setterCache == null)
@@ -206,8 +208,7 @@ public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
 
 public sealed class FloatValuePropertyBinder : GenericFloatPropertyBinder<float>
 {
-    // public float Value0 = 0;
-    // public float Value1 = 1.0f;
+    
 
    
     protected override void OnSetLevel(float level)
@@ -234,6 +235,9 @@ public sealed class Vector3ValuePropertyBinderFloat : GenericFloatPropertyBinder
         return TargetProperty.x; 
     }
 }
+
+
+
 
 
 [System.Serializable]
