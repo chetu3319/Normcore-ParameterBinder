@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42b1b749-0b6c-4864-ba5e-fce5c9b433e3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Normal.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Blank Scene Template.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Blank Scene Template.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Blue.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Blue.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Orange.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Orange.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Orange.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Orange.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Purple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Purple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Purple.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Purple.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Red.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Red.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Teal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Teal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Teal.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Teal.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Yellow.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Cubes/Yellow.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Floor/Floor.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Scripts/OculusSetFloorTrackingOriginWithoutPlugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Scripts/OculusSetFloorTrackingOriginWithoutPlugin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Scripts/OculusSetFloorTrackingOriginWithoutPlugin.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Scripts/OculusSetFloorTrackingOriginWithoutPlugin.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Blank Scene Template/Skybox/GradientSkybox.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Realtime + Cube Player.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Resources.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Resources.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Resources/CubePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Resources/CubePlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Resources/CubePlayer.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Resources/CubePlayer.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayerManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/Cube Player/Scripts/CubePlayerManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models/HeadModel.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models/HeadModel.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models/LeftHandModel.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models/LeftHandModel.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models/RightHandModel.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Models/RightHandModel.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Realtime + VR Player.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Resources.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Resources.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Resources/VR Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Resources/VR Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Resources/VR Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Resources/VR Player.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceMouthMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceMouthMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceMouthMove.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceMouthMove.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceScale.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceScale.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceScale.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normal/Examples/VR Player/Scripts/VoiceScale.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/AudioDeviceDataReader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/AudioDeviceDataReader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/AudioOutput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/AudioOutput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/AudioPreprocessorPlaybackListener.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/AudioPreprocessorPlaybackListener.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/MicrophoneDevice.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/MicrophoneDevice.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/OculusMicrophoneDevice.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Audio/OculusMicrophoneDevice.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars/RealtimeAvatar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars/RealtimeAvatar.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars/RealtimeAvatarManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars/RealtimeAvatarManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars/RealtimeAvatarVoice.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Avatars/RealtimeAvatarVoice.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components/RealtimeComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components/RealtimeComponent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components/RealtimeTransform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components/RealtimeTransform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components/RealtimeTransformModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Components/RealtimeTransformModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Core.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Core/Realtime.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Core/Realtime.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeAvatarEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeAvatarEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeAvatarManagerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeAvatarManagerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeModelEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeModelEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeTransformEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeTransformEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeViewEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/RealtimeViewEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/Resources/NormalEditorUILogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Editor/Resources/NormalEditorUILogo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/AudioInputStream.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/AudioInputStream.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/AudioOutputStream.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/AudioOutputStream.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/AudioPreprocessor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/AudioPreprocessor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Client.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Client.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Exceptions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Exceptions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Matcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Matcher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Microphone.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Microphone.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android/arm64.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android/arm64/libRealtimeClient.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android/arm64/libRealtimeClient.so.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android/armv7.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android/armv7/libRealtimeClient.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Android/armv7/libRealtimeClient.so.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Legal Notices.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Legal Notices.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle/Contents.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle/Contents/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle/Contents/Info.plist.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle/Contents/MacOS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle/Contents/MacOS/RealtimeClient" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Mac/RealtimeClient.bundle/Contents/MacOS/RealtimeClient.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Plugin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Plugin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Windows.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Windows/RealtimeClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/Windows/RealtimeClient.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/iOS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/iOS/RealtimeClient.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Native/Plugins/iOS/RealtimeClient.a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Realtime.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Realtime.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Room.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Room/Datastore.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Room/Datastore.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Room/Room.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Room/Room.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture/RealtimeSessionCapture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture/RealtimeSessionCapture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture/SessionCapture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture/SessionCapture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture/SessionCaptureFileStream.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Session Capture/SessionCaptureFileStream.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Utility.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Utility/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Utility/Editor/ExecutionOrderManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Utility/Editor/ExecutionOrderManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Utility/Utility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/Utility/Utility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeViewComponentsModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeViewComponentsModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeViewConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeViewConfiguration.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normal/Realtime/View/RealtimeViewModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normcore ParameterBinder/Example/Realtime + Parameter Binder.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normcore ParameterBinder/Example/Realtime + Parameter Binder.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Normcore ParameterBinder/Scripts/NormalPrimaryDatatypeModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Normcore ParameterBinder/Scripts/NormalPrimaryDatatypeModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Normcore ParameterBinder/Scripts/NormalPrimaryDatatypeSync.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1fuqCS9wZXLUHh3bsRgLcYvVxYr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42b1b749-0b6c-4864-ba5e-fce5c9b433e3" name="Default Changelist" comment="" />
+      <created>1597078198623</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597078198623</updated>
+      <workItem from="1597078212439" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
