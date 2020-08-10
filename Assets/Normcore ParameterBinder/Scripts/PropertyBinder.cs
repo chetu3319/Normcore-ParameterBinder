@@ -82,8 +82,8 @@ public abstract class GenericBoolPropertyBinder<T> : BoolPropertyBinder
 //Binder for Boolean Values
 public sealed class BooleanPropertyBinder : GenericBoolPropertyBinder<bool>
 {
-    public bool Value0 = false;
-    public bool Value1 = true;
+    // public bool Value0 = false;
+    // public bool Value1 = true;
 
    
     protected override void OnSetLevel(bool level)
@@ -171,8 +171,8 @@ public abstract class GenericPropertyBinder<T> : FloatPropertyBinder
 
 public sealed class FloatValuePropertyBinder : GenericPropertyBinder<float>
 {
-    public float Value0 = 0;
-    public float Value1 = 1.0f;
+    // public float Value0 = 0;
+    // public float Value1 = 1.0f;
 
    
     protected override void OnSetLevel(float level)

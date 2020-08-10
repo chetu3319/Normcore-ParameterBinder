@@ -35,8 +35,16 @@ sealed class PropertyBinderEditor
         rect.x += (rect.width - 200) / 2;
         rect.width = 200;
 
-        if (GUI.Button(rect, "Add "+ _datatype +"Property Binder"))
-            CreateNewPropertyBinderMenu(_datatype).DropDown(rect);
+        if (GUI.Button(rect, "Add " + _datatype + "Property Binder"))
+        {
+           //  CreateNewPropertyBinderMenu(_datatype).DropDown(rect);
+             //OnAddNewPropertyBinder<FloatValuePropertyBinder>();
+             CreateNewProprtyBinder(_datatype);
+            
+        }
+
+       
+            
     }
 
     #endregion
@@ -48,8 +56,8 @@ sealed class PropertyBinderEditor
 
     static class Styles
     {
-        public static Label Value0 = "Value at 0";
-        public static Label Value1 = "Value at 1";
+        // public static Label Value0 = "Value at 0";
+        // public static Label Value1 = "Value at 1";
         public static Label MoveUp = "Move Up";
         public static Label MoveDown = "Move Down";
         public static Label Remove = "Remove";
@@ -83,6 +91,19 @@ sealed class PropertyBinderEditor
     public void AddNewPropertyBinderItem<T>(GenericMenu menu) where T : new()
       => menu.AddItem(PropertyBinderTypeLabel<T>.Content,
                       false, OnAddNewPropertyBinder<T>);
+
+    void CreateNewProprtyBinder(string dataType)
+    {
+        if (dataType == "bool")
+        {
+            OnAddNewPropertyBinder<BooleanPropertyBinder>();   
+        }
+
+        if (dataType == "float")
+        {
+            OnAddNewPropertyBinder<FloatValuePropertyBinder>();
+        }
+    }
 
     void OnAddNewPropertyBinder<T>() where T : new()
     {
@@ -126,8 +147,8 @@ sealed class PropertyBinderEditor
             PropertySelector.GetInstance(target, finder["_propertyType"])
             .ShowGUI(finder["PropertyName"]))
         {
-            EditorGUILayout.PropertyField(finder["Value0"], Styles.Value0);
-            EditorGUILayout.PropertyField(finder["Value1"], Styles.Value1);
+            // EditorGUILayout.PropertyField(finder["Value0"], Styles.Value0);
+            // EditorGUILayout.PropertyField(finder["Value1"], Styles.Value1);
         }
 
         _binders.serializedObject.ApplyModifiedProperties();
