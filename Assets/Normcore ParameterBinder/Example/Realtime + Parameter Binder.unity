@@ -690,37 +690,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _propertyBinders:
   - id: 0
-  - id: 1
+  - id: 0
   _floatPropertyBinders:
-  - id: 2
+  - id: 0
   sliderValue: 0
   flagValue: 0
   references:
     version: 1
     00000000:
-      type: {class: BooleanPropertyBinder, ns: , asm: Assembly-CSharp}
-      data:
-        Enabled: 1
-        Target: {fileID: 1923674414}
-        PropertyName: enabled
-        _propertyType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-    00000001:
-      type: {class: BooleanPropertyBinder, ns: , asm: Assembly-CSharp}
-      data:
-        Enabled: 1
-        Target: {fileID: 0}
-        PropertyName: 
-        _propertyType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-    00000002:
-      type: {class: FloatValuePropertyBinder, ns: , asm: Assembly-CSharp}
-      data:
-        Enabled: 1
-        Target: {fileID: 0}
-        PropertyName: 
-        _propertyType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
+      type: {class: , ns: , asm: }
 --- !u!114 &827120222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,6 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   booleanValue: 0
   floatValue: 0
+  vector3Value: {x: 0, y: 0, z: 0}
 --- !u!4 &1336367438
 Transform:
   m_ObjectHideFlags: 0
@@ -1171,30 +1150,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfec10cbef4e4e3a86dcbe6d42d788c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boolPropertyBinders:
+  _boolPropertyBinders: []
+  _floatPropertyBinders: []
+  _vector3PropertyBinders:
   - id: 0
-  _floatPropertyBinders:
-  - id: 1
-  localFloatProperty: 0
+  localFloatProperty: 3.37
   localBoolProperty: 0
+  localVector3Property: {x: 1, y: 1, z: 1}
   references:
     version: 1
     00000000:
-      type: {class: BooleanPropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: Vector3ValuePropertyBinder, ns: , asm: Assembly-CSharp}
       data:
         Enabled: 1
-        Target: {fileID: 1336367437}
-        PropertyName: BooleanValue
-        _propertyType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-    00000001:
-      type: {class: FloatValuePropertyBinder, ns: , asm: Assembly-CSharp}
-      data:
-        Enabled: 1
-        Target: {fileID: 1336367437}
-        PropertyName: FloatValue
-        _propertyType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
+        Target: {fileID: 1923674412}
+        PropertyName: localScale
+        _propertyType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
 --- !u!114 &1919217294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,7 +1180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _realtime: {fileID: 541472583}
-  _sceneViewUUID: f53b07bbb5e84a4388a5c31c32c57d4a
+  _sceneViewUUID: 6ad6105bd696a7449dbdac33071ab354
   _sceneViewOwnedByCreatingClient: 1
   _sceneViewPreventOwnershipTakeover: 0
   _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
