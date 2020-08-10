@@ -72,7 +72,7 @@ sealed class PropertyBinderEditor
         var menu = new GenericMenu();
         if (dataType == "bool")
         {
-            AddNewPropertyBinderItem<BooleanPropertyBinder>(menu);   
+            AddNewPropertyBinderItem<BoolValuePropertyBinder>(menu);   
         }
 
         if (dataType == "float")
@@ -94,14 +94,27 @@ sealed class PropertyBinderEditor
 
     void CreateNewProprtyBinder(string dataType)
     {
-        if (dataType == "bool")
-        {
-            OnAddNewPropertyBinder<BooleanPropertyBinder>();   
-        }
+        // if (dataType == "bool")
+        // {
+        //     OnAddNewPropertyBinder<BoolValuePropertyBinder>();   
+        // }
+        //
+        // if (dataType == "float")
+        // {
+        //     OnAddNewPropertyBinder<FloatValuePropertyBinder>();
+        // }
 
-        if (dataType == "float")
+        switch (dataType)        
         {
-            OnAddNewPropertyBinder<FloatValuePropertyBinder>();
+            case "bool": 
+                OnAddNewPropertyBinder<BoolValuePropertyBinder>();
+                break;
+            case "float":
+                OnAddNewPropertyBinder<FloatValuePropertyBinder>();
+                break;
+            case "Vector3":
+                OnAddNewPropertyBinder<Vector3ValuePropertyBinder>();
+                break;
         }
     }
 

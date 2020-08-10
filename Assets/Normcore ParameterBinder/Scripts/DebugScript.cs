@@ -20,4 +20,12 @@ public class DebugScript : MonoBehaviour
       get => floatValue;
       set => floatValue = value;
    }
+
+   [SerializeField]private Vector3 vector3Value;
+
+   public Vector3 Vector3Value
+   {
+      get => vector3Value;
+      set => vector3Value = value;
+   }
 }

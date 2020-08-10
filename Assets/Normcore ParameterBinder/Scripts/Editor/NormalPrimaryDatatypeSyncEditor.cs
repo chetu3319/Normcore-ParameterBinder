@@ -9,6 +9,7 @@ public class NormalPrimaryDatatypeSyncEditor : UnityEditor.Editor
 {
     private PropertyBinderEditor _boolPropertyBinderEditor;
     private PropertyBinderEditor _floatPropertyBinderEditor;
+    private PropertyBinderEditor _vector3PropertyBinderEditor; 
 
     private void OnEnable()
     {
@@ -16,7 +17,7 @@ public class NormalPrimaryDatatypeSyncEditor : UnityEditor.Editor
         
         _boolPropertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_boolPropertyBinders"), "bool");
         _floatPropertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_floatPropertyBinders"),"float");
-        
+        _vector3PropertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_vector3PropertyBinders"), "Vector3");
     }
 
     public override bool RequiresConstantRepaint()
@@ -32,6 +33,7 @@ public class NormalPrimaryDatatypeSyncEditor : UnityEditor.Editor
         {
             _boolPropertyBinderEditor.ShowGUI();
             _floatPropertyBinderEditor.ShowGUI();
+            _vector3PropertyBinderEditor.ShowGUI();
         }
     }
 }

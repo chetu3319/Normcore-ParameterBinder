@@ -21,10 +21,19 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
         get => (FloatPropertyBinder[]) _floatPropertyBinders.Clone();
         set => _floatPropertyBinders = value; 
     }
+    
+    [SerializeReference] [HideInInspector] private Vector3PropertyBinder[] _vector3PropertyBinders = null;
+
+    public Vector3PropertyBinder[] Vector3PropertyBinders
+    {
+        get => (Vector3PropertyBinder[]) _vector3PropertyBinders.Clone();
+        set => _vector3PropertyBinders = value; 
+    }
 
 
     public float localFloatProperty;
     public bool localBoolProperty;
+    public Vector3 localVector3Property; 
 
 
     private NormalPrimaryDatatypeModel _model;
@@ -37,6 +46,7 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
             {
                 _model.boolPropertyDidChange -= ModelOnboolPropertyDidChange;
                 _model.floatPropertyDidChange -= ModelOnfloatPropertyDidChange;
+                _model.vector3PropertyDidChange -= ModelOnvector3PropertyDidChange;
             }
 
             _model = value;
@@ -45,10 +55,29 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
             {
                 UpdateFloatProperty();
                 UpdateBoolProperty();
+                UpdateVector3Property(); 
                 _model.boolPropertyDidChange += ModelOnboolPropertyDidChange;
                 _model.floatPropertyDidChange += ModelOnfloatPropertyDidChange; 
+                _model.vector3PropertyDidChange += ModelOnvector3PropertyDidChange;
             }
         }
+    }
+
+    private void UpdateVector3Property()
+    {
+        localVector3Property = _model.vector3Property;
+        if (_vector3PropertyBinders != null)
+        {
+            foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+            {
+                vector3PropertyBinder.vector3Property = localVector3Property;
+            }
+        }
+    }
+
+    private void ModelOnvector3PropertyDidChange(NormalPrimaryDatatypeModel normalPrimaryDatatypeModel, Vector3 value)
+    {
+        UpdateVector3Property();
     }
 
     private void UpdateBoolProperty()
@@ -116,8 +145,18 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
                     localFloatProperty = floatPropertyBinder.floatProperty;
                     _model.floatProperty = localFloatProperty; 
                 }
-
-            
+            }
+        }
+        
+        if (_vector3PropertyBinders != null)
+        {
+            foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+            {
+                if (vector3PropertyBinder.vector3Property != localVector3Property)
+                {
+                    localVector3Property = vector3PropertyBinder.vector3Property;
+                    _model.vector3Property = localVector3Property; 
+                }
             }
         }
     }
