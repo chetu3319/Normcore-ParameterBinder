@@ -80,9 +80,13 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
 
             if (_model != null)
             {
-                UpdateFloatProperty();
-                UpdateBoolProperty();
-                UpdateVector3Property(); 
+                if (!_model.isFreshModel)
+                {
+                    UpdateFloatProperty();
+                    UpdateBoolProperty();
+                    UpdateVector3Property();   
+                }
+                
                 _model.boolPropertyDidChange += ModelOnboolPropertyDidChange;
                 _model.floatPropertyDidChange += ModelOnfloatPropertyDidChange; 
                 _model.vector3PropertyDidChange += ModelOnvector3PropertyDidChange;
@@ -141,7 +145,29 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
     {
         UpdateBoolProperty();
     }
-    
+
+    private void Start()
+    {
+        if (_floatPropertyBinders != null)
+        {
+         
+            localFloatProperty = _floatPropertyBinders[0].floatProperty;
+        }
+
+        if (_model != null)
+        {   Debug.Log("Model is present");
+           
+            if (_model.isFreshModel)
+            {
+                Debug.Log("Init model");
+                _model.boolProperty = localBoolProperty;
+                _model.floatProperty = localFloatProperty;
+                _model.vector3Property = localVector3Property;
+            }
+        }
+        
+        
+    }
 
     // Update is called once per frame
     void Update()

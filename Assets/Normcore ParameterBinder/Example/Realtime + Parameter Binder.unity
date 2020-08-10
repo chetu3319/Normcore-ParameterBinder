@@ -1826,7 +1826,7 @@ MonoBehaviour:
   - id: 4
   - id: 5
   localFloatProperty: 3.37
-  localBoolProperty: 0
+  localBoolProperty: 1
   localVector3Property: {x: 1, y: 1, z: 1}
   references:
     version: 1
