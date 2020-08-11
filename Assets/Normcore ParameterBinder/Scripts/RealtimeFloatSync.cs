@@ -42,13 +42,14 @@ public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
         set => _floatPropertyBinders = value;
     }
     #endregion
-
+    
+    // Local Variable which will be synced with the network. 
+    // Property binders will subscribe to this value to be in sync. 
     [HideInInspector] public float localFloatValue;
     
     #region Normcore Realtime Logic
     private void UpdateFloatProperty()
-    { 
-        
+    {
        localFloatValue = this.model.floatProperty;
        if (_floatPropertyBinders != null)
        {
@@ -57,12 +58,10 @@ public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
                floatPropertyBinder.floatProperty = localFloatValue;
            }
        }
-
     }
 
     private void ModelOnfloatPropertyDidChange(RealtimeFloatModel normcoreFloatModel, float value)
     {
-        
         UpdateFloatProperty();
     }
 
@@ -76,7 +75,6 @@ public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
   
         if (currentModel != null)
         {
-           // _model = currentModel; 
             if (!currentModel.isFreshModel)
             { 
                 UpdateFloatProperty();
@@ -98,7 +96,6 @@ public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
     // Update is called once per frame
     void Update()
     {
-
         if (_floatPropertyBinders != null)        
         {
             foreach (var floatPropertyBinder in _floatPropertyBinders)

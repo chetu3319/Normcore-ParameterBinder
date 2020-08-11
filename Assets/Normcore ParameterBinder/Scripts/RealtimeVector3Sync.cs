@@ -46,6 +46,8 @@ public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
 
     #endregion
     
+    // Local Variable which will be synced with the network. 
+    // Property binders will subscribe to this value to be in sync. 
     [HideInInspector]
     public Vector3 localVector3Value;
 
@@ -64,7 +66,6 @@ public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
             {
                 UpdateVector3Property();
             }
-
             currentModel.vector3PropertyDidChange += ModelOnvector3PropertyDidChange; 
         }
     }
@@ -76,7 +77,6 @@ public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
         {
             foreach (var vector3PropertyBinder in _vector3PropertyBinders)
             {
-                
                 vector3PropertyBinder.vector3Property = localVector3Value; 
             }
         }
@@ -110,7 +110,6 @@ public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
             {
                 if (vector3PropertyBinder.vector3Property != localVector3Value)
                 {
-                   
                     localVector3Value = vector3PropertyBinder.vector3Property;
                     if (this.model != null)
                     {

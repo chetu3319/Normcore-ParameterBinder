@@ -105,10 +105,7 @@ sealed class PropertyBinderEditor
 
         if (GUI.Button(rect, "Add " + _datatype + " Property Binder"))
         {
-           //  CreateNewPropertyBinderMenu(_datatype).DropDown(rect);
-             //OnAddNewPropertyBinder<FloatValuePropertyBinder>();
-             //CreateNewProprtyBinder(_datatype);
-             switch (_datatype)        
+            switch (_datatype)        
              {
                  case "bool": 
                      OnAddNewPropertyBinder<BoolValuePropertyBinder>();
@@ -120,11 +117,7 @@ sealed class PropertyBinderEditor
                      OnAddNewPropertyBinder<Vector3ValuePropertyBinder>();
                      break;
              }
-            
         }
-
-       
-            
     }
 
     #endregion
@@ -183,35 +176,7 @@ sealed class PropertyBinderEditor
     public void AddNewPropertyBinderItem<T>(GenericMenu menu) where T : new()
       => menu.AddItem(PropertyBinderTypeLabel<T>.Content,
                       false, OnAddNewPropertyBinder<T>);
-
-    void CreateNewProprtyBinder(string dataType)
-    {
-        // if (dataType == "bool")
-        // {
-        //     OnAddNewPropertyBinder<BoolValuePropertyBinder>();   
-        // }
-        //
-        // if (dataType == "float")
-        // {
-        //     OnAddNewPropertyBinder<FloatValuePropertyBinder>();
-        // }
-
-        switch (dataType)        
-        {
-            case "bool": 
-                OnAddNewPropertyBinder<BoolValuePropertyBinder>();
-                break;
-            case "float":
-                var menu = new GenericMenu();
-                
-                OnAddNewPropertyBinder<ConnectFloatToFloatPropertyBinder>();
-                break;
-            case "Vector3":
-                OnAddNewPropertyBinder<Vector3ValuePropertyBinder>();
-                break;
-        }
-    }
-
+    
     void OnAddNewPropertyBinder<T>() where T : new()
     {
         _binders.serializedObject.Update();

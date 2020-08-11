@@ -43,8 +43,9 @@ public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
         set => _boolPropertyBinders = value;
     }
     #endregion
-   
     
+    // Local Variable which will be synced with the network. 
+    // Property binders will subscribe to this value to be in sync. 
     [HideInInspector]
     public bool localBoolValue;
 
