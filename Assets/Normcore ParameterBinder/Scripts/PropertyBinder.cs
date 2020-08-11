@@ -206,7 +206,7 @@ public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
     }
 }
 
-public sealed class FloatValuePropertyBinder : GenericFloatPropertyBinder<float>
+public sealed class ConnectFloatToFloatPropertyBinder : GenericFloatPropertyBinder<float>
 {
     
 
@@ -223,7 +223,7 @@ public sealed class FloatValuePropertyBinder : GenericFloatPropertyBinder<float>
     }
 }
 
-public sealed class Vector3ValuePropertyBinderFloat : GenericFloatPropertyBinder<Vector3>
+public sealed class ConnectFloatToVector3PropertyBinder : GenericFloatPropertyBinder<Vector3>
 {
     protected override void OnSetLevel(float level)
     {
