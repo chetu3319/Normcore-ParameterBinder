@@ -48,7 +48,6 @@ public class NormalPrimaryDatatypeSync : RealtimeComponent
         get => (FloatPropertyBinder[]) _floatPropertyBinders.Clone();
         set => _floatPropertyBinders = value; 
     }
-    
     [SerializeReference] [HideInInspector] private Vector3PropertyBinder[] _vector3PropertyBinders = null;
 
     public Vector3PropertyBinder[] Vector3PropertyBinders
