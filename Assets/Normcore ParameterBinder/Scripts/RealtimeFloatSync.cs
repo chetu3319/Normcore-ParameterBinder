@@ -90,6 +90,10 @@ public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
         if (_floatPropertyBinders != null)
         {
             localFloatValue = _floatPropertyBinders[0].floatProperty; 
+            foreach (var floatPropertyBinder in _floatPropertyBinders)
+            {
+                floatPropertyBinder.floatProperty = localFloatValue; 
+            }
         }
     }
 
@@ -100,7 +104,7 @@ public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
         {
             foreach (var floatPropertyBinder in _floatPropertyBinders)
             {
-                if (floatPropertyBinder.floatProperty != localFloatValue)
+                if (floatPropertyBinder.floatProperty != localFloatValue || (this.model!= null && this.model.floatProperty != localFloatValue))
                 {
                     localFloatValue = floatPropertyBinder.floatProperty;
                     if (this.model != null)

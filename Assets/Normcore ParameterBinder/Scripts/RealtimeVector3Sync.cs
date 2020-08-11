@@ -108,7 +108,7 @@ public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
         {
             foreach (var vector3PropertyBinder in _vector3PropertyBinders)
             {
-                if (vector3PropertyBinder.vector3Property != localVector3Value)
+                if (vector3PropertyBinder.vector3Property != localVector3Value || (this.model!=null && this.model.vector3Property != localVector3Value))
                 {
                     localVector3Value = vector3PropertyBinder.vector3Property;
                     if (this.model != null)

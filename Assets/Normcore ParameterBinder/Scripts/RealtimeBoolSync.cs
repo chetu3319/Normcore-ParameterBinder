@@ -92,7 +92,13 @@ public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
         if (_boolPropertyBinders != null)
         {
             localBoolValue = _boolPropertyBinders[0].boolProperty; 
+            foreach (var boolPropertyBinder in _boolPropertyBinders)
+            {
+                boolPropertyBinder.boolProperty = localBoolValue; 
+            }
         }
+
+       
     }
 
     private void Update()
@@ -101,7 +107,7 @@ public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
         {
             foreach (var propertyBinder in _boolPropertyBinders)
             {
-                if (propertyBinder.boolProperty != localBoolValue)
+                if (propertyBinder.boolProperty != localBoolValue || (this.model != null && this.model.boolProperty != localBoolValue))
                 {
                     localBoolValue = propertyBinder.boolProperty;
                     if (this.model != null)
