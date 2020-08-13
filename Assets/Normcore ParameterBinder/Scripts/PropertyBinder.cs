@@ -36,12 +36,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
-using UnityEngine.Assertions.Must;
-
 
 //
 // Property binder classes used for driving properties of external objects
-// by audio level
 //
 
 // Property binder base class
@@ -321,6 +318,89 @@ public sealed class Vector3ValuePropertyBinder : GenericVector3PropertyBinder<Ve
     }
 
     protected override Vector3 OnGetProperty()
+    {
+        return TargetProperty; 
+    }
+}
+
+
+
+[System.Serializable]
+public abstract class ColorPropertyBinder
+{
+    public bool Enabled = true;
+
+    public Color colorProperty
+    {
+        get { return OnGetProperty(); }
+        set
+        {
+            if (Enabled) OnSetProperty(value);
+        }
+    }
+
+    protected abstract void OnSetProperty(Color value);
+    protected abstract Color OnGetProperty(); 
+}
+
+public abstract class GenericColorPropertyBinder<T> : ColorPropertyBinder
+{
+    // Serialized target property information
+    public Component Target;
+    public string PropertyName;
+
+    // This field in only used in Editor to determine the target property
+    // type. Don't modify it after instantiation.
+    [SerializeField, HideInInspector]
+    string _propertyType = typeof(T).AssemblyQualifiedName;
+
+    // Target property setter
+    protected T TargetProperty
+    {
+        get
+        {
+            return (T)GetProperty(Target, PropertyName);
+        }
+        set => SetTargetProperty(value);
+    }
+
+    UnityAction<T> _setterCache;
+
+    private static object GetProperty(Component inObj, string fieldName)
+    {
+        object ret = null;
+        Type myObj = inObj.GetType();
+
+        PropertyInfo info = myObj.GetProperty(fieldName);
+        
+        // FieldInfo info = inObj.GetType().GetField(fieldName);
+        if (info != null)
+            ret = info.GetValue(inObj);
+        return ret;
+    }
+    void SetTargetProperty(T value)
+    {
+        if (_setterCache == null)
+        {
+            if (Target == null) return;
+            if (string.IsNullOrEmpty(PropertyName)) return;
+          
+            _setterCache
+                = (UnityAction<T>)System.Delegate.CreateDelegate
+                    (typeof(UnityAction<T>), Target, "set_" + PropertyName);
+        }
+        _setterCache(value);
+    }
+}
+
+public sealed class ColorValuePropertyBinder : GenericColorPropertyBinder<Color>
+{
+    protected override void OnSetProperty(Color value)
+    {
+        TargetProperty = value;
+    }
+
+    protected override Color OnGetProperty()
     {
         return TargetProperty; 
     }
