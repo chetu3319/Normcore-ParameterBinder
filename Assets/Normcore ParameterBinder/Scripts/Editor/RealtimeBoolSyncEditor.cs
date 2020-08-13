@@ -52,7 +52,7 @@ public class RealtimeBoolSyncEditor : UnityEditor.Editor
 
     public override void OnInspectorGUI()
     {
-        RealtimeBoolSync data = (RealtimeBoolSync) target; 
+        RealtimeBoolSync data = (RealtimeBoolSync) target;
         base.OnInspectorGUI();
         GUILayout.Label("Bool Value is: " + data.localBoolValue);
         
