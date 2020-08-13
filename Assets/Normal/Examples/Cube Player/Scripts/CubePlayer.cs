@@ -15,7 +15,7 @@ namespace Normal.Realtime.Examples {
 
         private void Update() {
             // If this CubePlayer prefab is not owned by this client, bail.
-            if (!_realtimeView.isOwnedLocally)
+            if (!_realtimeView.isOwnedLocallySelf)
                 return;
 
             // Make sure we own the transform so that RealtimeTransform knows to use this client's transform to synchronize remote clients.
