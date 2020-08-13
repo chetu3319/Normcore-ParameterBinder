@@ -116,6 +116,12 @@ sealed class PropertyBinderEditor
                  case "Vector3":
                      OnAddNewPropertyBinder<Vector3ValuePropertyBinder>();
                      break;
+                 case "Color":
+                     OnAddNewPropertyBinder<ColorValuePropertyBinder>();
+                     break;
+                 default:
+                     Debug.LogError("dataType not supported: " + _datatype);
+                     break;
              }
         }
     }
@@ -139,37 +145,14 @@ sealed class PropertyBinderEditor
     #endregion
 
     #region "Add Property Binder" button
-
-    GenericMenu CreateNewPropertyBinderMenu(string dataType)
-    {
-        var menu = new GenericMenu();
-        if (dataType == "bool")
-        {
-            AddNewPropertyBinderItem<BoolValuePropertyBinder>(menu);   
-        }
-
-        if (dataType == "float")
-        {
-            AddNewPropertyBinderItem<ConnectFloatToFloatPropertyBinder>(menu);
-        }
-
-        // AddNewPropertyBinderItem<FloatPropertyBinder>(menu);
-        // AddNewPropertyBinderItem<Vector3PropertyBinder>(menu);
-        // AddNewPropertyBinderItem<EulerRotationPropertyBinder>(menu);
-        // AddNewPropertyBinderItem<ColorPropertyBinder>(menu);
-       
-        return menu;
-    }
     
     GenericMenu CreateFloatPropertyBinderMenu()
     {
         var menu = new GenericMenu();
         
-
         AddNewPropertyBinderItem<ConnectFloatToFloatPropertyBinder>(menu);
         AddNewPropertyBinderItem<ConnectFloatToVector3PropertyBinder>(menu);
         
-       
         return menu;
     }
 
