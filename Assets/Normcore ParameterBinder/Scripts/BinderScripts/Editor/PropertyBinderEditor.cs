@@ -83,6 +83,10 @@ sealed class PropertyBinderEditor
                  case "Color":
                      OnAddNewPropertyBinder<ColorValuePropertyBinder>();
                      break;
+                 case "string":
+                     OnAddNewPropertyBinder<StringValuePropertyBinder>();
+                     break;
+                 
                  default:
                      Debug.LogError("dataType not supported: " + _datatype);
                      break;
