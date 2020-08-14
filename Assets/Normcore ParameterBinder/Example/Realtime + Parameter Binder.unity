@@ -652,7 +652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obsoleteAppKey: 
-  _normcoreAppSettings: {fileID: 0}
+  _normcoreAppSettings: {fileID: 11400000, guid: 02a3495af39fd4ec4a2575475f5fd3d9,
+    type: 2}
   _roomToJoinOnStart: Test Room
   _joinRoomOnStart: 1
   _debugLogging: 0
@@ -1023,7 +1024,7 @@ RectTransform:
   - {fileID: 1615366103}
   - {fileID: 1943666657}
   m_Father: {fileID: 1595616357}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1382,8 +1383,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274271785}
-  - component: {fileID: 1274271786}
-  - component: {fileID: 1274271789}
   - component: {fileID: 1274271788}
   - component: {fileID: 1274271787}
   m_Layer: 0
@@ -1402,43 +1401,16 @@ RectTransform:
   m_GameObject: {fileID: 1274271784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 1514094370}
-  m_RootOrder: 1
+  m_Father: {fileID: 1595616357}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 1, y: 1}
---- !u!114 &1274271786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274271784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -363599832, guid: 30f4fd177e1fad742be136a8237ab587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _realtime: {fileID: 541472583}
-  _sceneViewUUID: 
-  _viewUUID: 49969a0b-a965-4984-b926-88d92bade01e
-  _sceneViewOwnedByCreatingClient: 0
-  _sceneViewPreventOwnershipTakeover: 0
-  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
-  _isRootPrefabView: 0
-  _components:
-  - componentID: 2
-    component: {fileID: 1274271789}
-  - componentID: 1
-    component: {fileID: 0}
-  - componentID: 3
-    component: {fileID: 0}
-  _childViews: []
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 75, y: -180}
+  m_SizeDelta: {x: 83.333, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1274271787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1476,31 +1448,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274271784}
   m_CullTransparentMesh: 0
---- !u!114 &1274271789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274271784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a7fc3f15736c4943a2e80f7691487e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorPropertyBinders:
-  - id: 0
-  localColorValue: {r: 0, g: 0, b: 0, a: 0}
-  references:
-    version: 1
-    00000000:
-      type: {class: ColorValuePropertyBinder, ns: , asm: Assembly-CSharp}
-      data:
-        Enabled: 1
-        Target: {fileID: 1274271787}
-        PropertyName: color
-        _propertyType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
 --- !u!1 &1435931581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1654,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1595616357}
-  - {fileID: 1274271785}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1743,6 +1689,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1274271785}
   - {fileID: 1864906910}
   - {fileID: 905920990}
   m_Father: {fileID: 1514094370}
@@ -1953,6 +1900,86 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1739517278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1739517281}
+  - component: {fileID: 1739517280}
+  - component: {fileID: 1739517279}
+  m_Layer: 0
+  m_Name: Color Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1739517279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739517278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7fc3f15736c4943a2e80f7691487e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorPropertyBinders:
+  - id: 0
+  localColorValue: {r: 0, g: 0, b: 0, a: 0}
+  references:
+    version: 1
+    00000000:
+      type: {class: ColorValuePropertyBinder, ns: , asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1274271787}
+        PropertyName: color
+        _propertyType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+--- !u!114 &1739517280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739517278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: 30f4fd177e1fad742be136a8237ab587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 541472583}
+  _sceneViewUUID: 
+  _viewUUID: 49969a0b-a965-4984-b926-88d92bade01e
+  _sceneViewOwnedByCreatingClient: 0
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _isRootPrefabView: 0
+  _components:
+  - componentID: 1
+    component: {fileID: 1739517279}
+  _childViews: []
+--- !u!4 &1739517281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739517278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1850779, y: -0.39992326, z: 11.415898}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1864906909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,7 +2013,7 @@ RectTransform:
   - {fileID: 104340611}
   - {fileID: 1722368780}
   m_Father: {fileID: 1595616357}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
