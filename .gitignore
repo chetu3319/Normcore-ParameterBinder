@@ -59,6 +59,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-
-Assets/NormcoreAppSettings.asset
+# Auto created Normcore default asset
+NormcoreAppSettings.asset
+NormcoreAppSettings.asset.meta
+# Normcore asset created through context menu
+Normcore App Settings.asset
+Normcore App Settings.asset.meta
 ProjectSettings/ProjectVersion.txt
