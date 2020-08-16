@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -37,96 +38,94 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-//
+namespace Normal.ParameterBinder
+{
+    //
 // Property binder classes used for driving properties of external objects
 //
 
 // Property binder base class
-[System.Serializable]
-public abstract class BoolPropertyBinder
-{
-    // Enable switch
-    public bool Enabled = true;
+    [System.Serializable]
+    public abstract class BoolPropertyBinder
+    {
+        // Enable switch
+        public bool Enabled = true;
 
-    // Audio level property (setter only)
-    public bool boolProperty { get
+        // Audio level property (setter only)
+        public bool boolProperty
         {
-            return OnGetLevel(); 
+            get { return OnGetLevel(); }
+            set
+            {
+                if (Enabled) OnSetLevel(value);
+            }
         }
-    set { if (Enabled) OnSetLevel(value); } }
 
-    // Binder implementation
-    protected abstract void OnSetLevel(bool level);
-    protected abstract bool OnGetLevel(); 
-}
+        // Binder implementation
+        protected abstract void OnSetLevel(bool level);
+        protected abstract bool OnGetLevel();
+    }
 
 // Generic intermediate implementation
-public abstract class GenericBoolPropertyBinder<T> : BoolPropertyBinder
-{
-    // Serialized target property information
-    public Component Target;
-    public string PropertyName;
-
-    // This field in only used in Editor to determine the target property
-    // type. Don't modify it after instantiation.
-    [SerializeField, HideInInspector]
-    string _propertyType = typeof(T).AssemblyQualifiedName;
-
-    // Target property setter
-    protected T TargetProperty
+    public abstract class GenericBoolPropertyBinder<T> : BoolPropertyBinder
     {
-        get
+        // Serialized target property information
+        public Component Target;
+        public string PropertyName;
+
+        // This field in only used in Editor to determine the target property
+        // type. Don't modify it after instantiation.
+        [SerializeField, HideInInspector] string _propertyType = typeof(T).AssemblyQualifiedName;
+
+        // Target property setter
+        protected T TargetProperty
         {
-            return (T)GetProperty(Target, PropertyName);
+            get { return (T) GetProperty(Target, PropertyName); }
+            set => SetTargetProperty(value);
         }
-        set => SetTargetProperty(value);
-    }
 
-    UnityAction<T> _setterCache;
+        UnityAction<T> _setterCache;
 
-    private static object GetProperty(Component inObj, string fieldName)
-    {
-        object ret = null;
-        Type myObj = inObj.GetType();
-
-        PropertyInfo info = myObj.GetProperty(fieldName);
-        
-       // FieldInfo info = inObj.GetType().GetField(fieldName);
-        if (info != null)
-            ret = info.GetValue(inObj);
-        return ret;
-    }
-    void SetTargetProperty(T value)
-    {
-        if (_setterCache == null)
+        private static object GetProperty(Component inObj, string fieldName)
         {
-            if (Target == null) return;
-            if (string.IsNullOrEmpty(PropertyName)) return;
-          
-            _setterCache
-              = (UnityAction<T>)System.Delegate.CreateDelegate
-                (typeof(UnityAction<T>), Target, "set_" + PropertyName);
+            object ret = null;
+            Type myObj = inObj.GetType();
+            PropertyInfo info = myObj.GetProperty(fieldName);
+
+            // FieldInfo info = inObj.GetType().GetField(fieldName);
+            if (info != null) ret = info.GetValue(inObj);
+            return ret;
         }
-        _setterCache(value);
+
+        void SetTargetProperty(T value)
+        {
+            if (_setterCache == null)
+            {
+                if (Target == null) return;
+                if (string.IsNullOrEmpty(PropertyName)) return;
+                _setterCache =
+                    (UnityAction<T>) System.Delegate.CreateDelegate(typeof(UnityAction<T>), Target,
+                        "set_" + PropertyName);
+            }
+
+            _setterCache(value);
+        }
     }
-}
 
 //Binder for Boolean Values
-public sealed class BoolValuePropertyBinder : GenericBoolPropertyBinder<bool>
-{
-    // public bool Value0 = false;
-    // public bool Value1 = true;
-
-   
-    protected override void OnSetLevel(bool level)
+    public sealed class BoolValuePropertyBinder : GenericBoolPropertyBinder<bool>
     {
-       
-        TargetProperty = level;
-    }
+        // public bool Value0 = false;
+        // public bool Value1 = true;
 
-    protected override bool OnGetLevel()
-    {
-        return TargetProperty; 
+        protected override void OnSetLevel(bool level)
+        {
+            TargetProperty = level;
+        }
+
+        protected override bool OnGetLevel()
+        {
+            return TargetProperty;
+        }
     }
 }
-

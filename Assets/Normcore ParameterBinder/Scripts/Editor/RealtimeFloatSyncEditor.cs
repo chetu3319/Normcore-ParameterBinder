@@ -26,39 +26,41 @@
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
 #endregion
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEditor; 
+using UnityEditor;
 
-[CustomEditor(typeof(RealtimeFloatSync))]
-public class RealtimeFloatSyncEditor : UnityEditor.Editor
+namespace Normal.ParameterBinder
 {
-    private PropertyBinderEditor _floatPropertyBinderEditor;
-
-    private void OnEnable()
+    [CustomEditor(typeof(RealtimeFloatSync))]
+    public class RealtimeFloatSyncEditor : Editor
     {
-        var finder = new PropertyFinder(serializedObject);
-        
-        _floatPropertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_floatPropertyBinders" ),"float");
-        
-    }
+        private PropertyBinderEditor _floatPropertyBinderEditor;
 
-    public override bool RequiresConstantRepaint()
-    {
-        return EditorApplication.isPlaying && targets.Length == 1; 
-        
-    }
-
-    public override void OnInspectorGUI()
-    {
-        RealtimeFloatSync data = (RealtimeFloatSync) target; 
-        base.OnInspectorGUI();
-        GUILayout.Label("Local Float Value: " + data.localFloatValue);
-        if (targets.Length == 1)
+        private void OnEnable()
         {
-            _floatPropertyBinderEditor.ShowGUI();
+            var finder = new PropertyFinder(serializedObject);
+
+            _floatPropertyBinderEditor =
+                new PropertyBinderEditor(serializedObject.FindProperty("_floatPropertyBinders"), "float");
+
+        }
+
+        public override bool RequiresConstantRepaint()
+        {
+            return EditorApplication.isPlaying && targets.Length == 1;
+
+        }
+
+        public override void OnInspectorGUI()
+        {
+            RealtimeFloatSync data = (RealtimeFloatSync) target;
+            base.OnInspectorGUI();
+            GUILayout.Label("Local Float Value: " + data.localFloatValue);
+            if (targets.Length == 1)
+            {
+                _floatPropertyBinderEditor.ShowGUI();
+            }
         }
     }
 }

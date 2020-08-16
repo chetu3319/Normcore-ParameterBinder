@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -37,100 +38,93 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-[System.Serializable]
-public abstract class FloatPropertyBinder
+namespace Normal.ParameterBinder
 {
-    public bool Enabled = true;
-
-    public float floatProperty
+    [Serializable]
+    public abstract class FloatPropertyBinder
     {
-        get => OnGetLevel();
-        set
+        public bool Enabled = true;
+
+        public float floatProperty
         {
-            if (Enabled) OnSetLevel(value);
+            get => OnGetLevel();
+            set
+            {
+                if (Enabled) OnSetLevel(value);
+            }
+        }
+
+        protected abstract void OnSetLevel(float level);
+        protected abstract float OnGetLevel();
+    }
+
+    public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
+    {
+        // Serialized target property information
+        public Component Target;
+        public string PropertyName;
+
+        // This field in only used in Editor to determine the target property
+        // type. Don't modify it after instantiation.
+        [SerializeField, HideInInspector] string _propertyType = typeof(T).AssemblyQualifiedName;
+
+        // Target property setter
+        protected T TargetProperty
+        {
+            get => (T) GetProperty(Target, PropertyName);
+            set => SetTargetProperty(value);
+        }
+
+        UnityAction<T> _setterCache;
+
+        private static object GetProperty(Component inObj, string fieldName)
+        {
+            object propertyValue = null;
+            Type myObj = inObj.GetType();
+            PropertyInfo info = myObj.GetProperty(fieldName);
+
+            // FieldInfo info = inObj.GetType().GetField(fieldName);
+            if (info != null) propertyValue = info.GetValue(inObj);
+            return propertyValue;
+        }
+
+        void SetTargetProperty(T value)
+        {
+            if (_setterCache == null)
+            {
+                if (Target == null) return;
+                if (string.IsNullOrEmpty(PropertyName)) return;
+                _setterCache =
+                    (UnityAction<T>) Delegate.CreateDelegate(typeof(UnityAction<T>), Target, "set_" + PropertyName);
+            }
+
+            _setterCache(value);
         }
     }
 
-    protected abstract void OnSetLevel(float level);
-    protected abstract float OnGetLevel(); 
-}
-
-public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
-{
-    // Serialized target property information
-    public Component Target;
-    public string PropertyName;
-
-    // This field in only used in Editor to determine the target property
-    // type. Don't modify it after instantiation.
-    [SerializeField, HideInInspector]
-    string _propertyType = typeof(T).AssemblyQualifiedName;
-
-    // Target property setter
-    protected T TargetProperty
+    public sealed class ConnectFloatToFloatPropertyBinder : GenericFloatPropertyBinder<float>
     {
-        get => (T)GetProperty(Target, PropertyName);
-        set => SetTargetProperty(value);
-    }
-
-    UnityAction<T> _setterCache;
-    
-
-    private static object GetProperty(Component inObj, string fieldName)
-    {
-        object propertyValue = null;
-        Type myObj = inObj.GetType();
-
-        PropertyInfo info = myObj.GetProperty(fieldName);
-        
-        // FieldInfo info = inObj.GetType().GetField(fieldName);
-        if (info != null)
-            propertyValue = info.GetValue(inObj);
-        return propertyValue;
-    }
-    
-    void SetTargetProperty(T value)
-    {
-        if (_setterCache == null)
+        protected override void OnSetLevel(float level)
         {
-            if (Target == null) return;
-            if (string.IsNullOrEmpty(PropertyName)) return;
-          
-            _setterCache
-                = (UnityAction<T>)System.Delegate.CreateDelegate
-                    (typeof(UnityAction<T>), Target, "set_" + PropertyName);
+            TargetProperty = level;
         }
-        _setterCache(value);
+
+        protected override float OnGetLevel()
+        {
+            return TargetProperty;
+        }
+    }
+
+    public sealed class ConnectFloatToVector3PropertyBinder : GenericFloatPropertyBinder<Vector3>
+    {
+        protected override void OnSetLevel(float level)
+        {
+            TargetProperty = new Vector3(level, level, level);
+        }
+
+        protected override float OnGetLevel()
+        {
+            return TargetProperty.x;
+        }
     }
 }
-
-public sealed class ConnectFloatToFloatPropertyBinder : GenericFloatPropertyBinder<float>
-{
-    
-
-   
-    protected override void OnSetLevel(float level)
-    {
-       
-        TargetProperty = level;
-    }
-
-    protected override float OnGetLevel()
-    {
-        return TargetProperty; 
-    }
-}
-
-public sealed class ConnectFloatToVector3PropertyBinder : GenericFloatPropertyBinder<Vector3>
-{
-    protected override void OnSetLevel(float level)
-    {
-        TargetProperty = new Vector3(level,level,level);
-    }
-
-    protected override float OnGetLevel()
-    {
-        return TargetProperty.x; 
-    }
-}
-

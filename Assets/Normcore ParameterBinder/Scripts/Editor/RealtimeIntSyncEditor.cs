@@ -26,24 +26,19 @@
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
 #endregion
-
 using UnityEngine;
 using UnityEditor;
 
 namespace Normal.ParameterBinder
 {
-    [CustomEditor(typeof(RealtimeVector3Sync))]
-    public class RealtimeVector3SyncEditor : Editor
+    [CustomEditor(typeof(RealtimeIntSync))]
+    public class RealtimeIntSyncEditor : Editor
     {
-        private PropertyBinderEditor _vector3PropertyBinderEditor;
+        private PropertyBinderEditor _intPropertyBinderEditor;
 
         private void OnEnable()
         {
-            var finder = new PropertyFinder(serializedObject);
-
-            _vector3PropertyBinderEditor =
-                new PropertyBinderEditor(serializedObject.FindProperty("_vector3PropertyBinders"), "Vector3");
-
+            _intPropertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_intPropertyBinders" ),"int");
         }
 
         public override bool RequiresConstantRepaint()
@@ -53,12 +48,15 @@ namespace Normal.ParameterBinder
 
         public override void OnInspectorGUI()
         {
-            RealtimeVector3Sync data = (RealtimeVector3Sync) target;
+            RealtimeIntSync data = (RealtimeIntSync) target; 
             base.OnInspectorGUI();
-            GUILayout.Label("Local Vector3 Value: " + data.localVector3Value);
+            if (Application.isPlaying)
+            {
+                GUILayout.Label("Local Int Value: " + data.localIntValue);
+            }
             if (targets.Length == 1)
             {
-                _vector3PropertyBinderEditor.ShowGUI();
+                _intPropertyBinderEditor.ShowGUI();
             }
         }
     }

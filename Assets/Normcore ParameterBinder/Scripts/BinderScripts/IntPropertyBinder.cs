@@ -40,34 +40,25 @@ using System.Reflection;
 
 namespace Normal.ParameterBinder
 {
-    //
-// Property binder classes used for driving properties of external objects
-//
-
-// Property binder base class
     [System.Serializable]
-    public abstract class StringPropertyBinder
+    public abstract class IntPropertyBinder
     {
-        // Enable switch
         public bool Enabled = true;
 
-        // Audio level property (setter only)
-        public string stringProperty
+        public int floatProperty
         {
-            get { return OnGetLevel(); }
+            get => OnGetProperty();
             set
             {
-                if (Enabled) OnSetLevel(value);
+                if (Enabled) OnSetProperty(value);
             }
         }
 
-        // Binder implementation
-        protected abstract void OnSetLevel(string level);
-        protected abstract string OnGetLevel();
+        protected abstract void OnSetProperty(int propertyValue);
+        protected abstract int OnGetProperty();
     }
 
-// Generic intermediate implementation
-    public abstract class GenericStringPropertyBinder<T> : StringPropertyBinder
+    public abstract class GenericIntPropertyBinder<T> : IntPropertyBinder
     {
         // Serialized target property information
         public Component Target;
@@ -80,21 +71,21 @@ namespace Normal.ParameterBinder
         // Target property setter
         protected T TargetProperty
         {
-            get { return (T) GetProperty(Target, PropertyName); }
+            get => (T) GetTargetProperty(Target, PropertyName);
             set => SetTargetProperty(value);
         }
 
         UnityAction<T> _setterCache;
 
-        private static object GetProperty(Component inObj, string fieldName)
+        private static object GetTargetProperty(Component inObj, string fieldName)
         {
-            object ret = null;
+            object propertyValue = null;
             Type myObj = inObj.GetType();
             PropertyInfo info = myObj.GetProperty(fieldName);
 
             // FieldInfo info = inObj.GetType().GetField(fieldName);
-            if (info != null) ret = info.GetValue(inObj);
-            return ret;
+            if (info != null) propertyValue = info.GetValue(inObj);
+            return propertyValue;
         }
 
         void SetTargetProperty(T value)
@@ -112,15 +103,14 @@ namespace Normal.ParameterBinder
         }
     }
 
-//Binder for string Values
-    public sealed class StringValuePropertyBinder : GenericStringPropertyBinder<string>
+    public sealed class IntValuePropertyBinder : GenericIntPropertyBinder<int>
     {
-        protected override void OnSetLevel(string level)
+        protected override void OnSetProperty(int propertyValue)
         {
-            TargetProperty = level;
+            TargetProperty = propertyValue;
         }
 
-        protected override string OnGetLevel()
+        protected override int OnGetProperty()
         {
             return TargetProperty;
         }

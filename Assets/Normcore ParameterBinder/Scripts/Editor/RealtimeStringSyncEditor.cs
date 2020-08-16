@@ -30,32 +30,37 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(RealtimeStringSync))]
-public class RealtimeStringSyncEditor : Editor
+namespace Normal.ParameterBinder
 {
-    PropertyBinderEditor _propertyBinderEditor;
-    private PropertyBinderEditor _floatPropertyBinderEditor; 
-    private void OnEnable()
+    [CustomEditor(typeof(RealtimeStringSync))]
+    public class RealtimeStringSyncEditor : Editor
     {
-        var finder = new PropertyFinder(serializedObject);
-        
-        _propertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_stringPropertyBinders"), "string");
-    }
+        PropertyBinderEditor _propertyBinderEditor;
+        private PropertyBinderEditor _floatPropertyBinderEditor;
 
-    public override bool RequiresConstantRepaint()
-    {
-        return EditorApplication.isPlaying && targets.Length == 1; 
-    }
-
-    public override void OnInspectorGUI()
-    {
-        RealtimeStringSync data = (RealtimeStringSync) target;
-        base.OnInspectorGUI();
-        GUILayout.Label("String Value is: " + data.localStringValue);
-        
-        if (targets.Length == 1 )
+        private void OnEnable()
         {
-            _propertyBinderEditor.ShowGUI();
+            var finder = new PropertyFinder(serializedObject);
+
+            _propertyBinderEditor =
+                new PropertyBinderEditor(serializedObject.FindProperty("_stringPropertyBinders"), "string");
+        }
+
+        public override bool RequiresConstantRepaint()
+        {
+            return EditorApplication.isPlaying && targets.Length == 1;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            RealtimeStringSync data = (RealtimeStringSync) target;
+            base.OnInspectorGUI();
+            GUILayout.Label("String Value is: " + data.localStringValue);
+
+            if (targets.Length == 1)
+            {
+                _propertyBinderEditor.ShowGUI();
+            }
         }
     }
 }

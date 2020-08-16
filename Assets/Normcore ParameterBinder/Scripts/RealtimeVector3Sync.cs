@@ -30,97 +30,104 @@
 using Normal.Realtime;
 using UnityEngine;
 
-[RequireComponent(typeof(RealtimeView))]
-public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
+namespace Normal.ParameterBinder
 {
-
-    #region Parameter Binding
-    [SerializeReference] [HideInInspector] private Vector3PropertyBinder[] _vector3PropertyBinders = null;
-
-    public Vector3PropertyBinder[] Vector3PropertyBinders
+    [RequireComponent(typeof(RealtimeView))]
+    public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
     {
-        get => (Vector3PropertyBinder[]) _vector3PropertyBinders.Clone();
-        set => _vector3PropertyBinders = value; 
-    }
-    
 
-    #endregion
-    
-    // Local Variable which will be synced with the network. 
-    // Property binders will subscribe to this value to be in sync. 
-    [HideInInspector]
-    public Vector3 localVector3Value;
+        #region Parameter Binding
 
-    #region Normcore Realtime Logic
+        [SerializeReference] [HideInInspector] private Vector3PropertyBinder[] _vector3PropertyBinders = null;
 
-    protected override void OnRealtimeModelReplaced(RealtimeVector3Model previousModel, RealtimeVector3Model currentModel)
-    {
-        if (previousModel != null)
+        public Vector3PropertyBinder[] Vector3PropertyBinders
         {
-            previousModel.vector3PropertyDidChange -= ModelOnvector3PropertyDidChange; 
+            get => (Vector3PropertyBinder[]) _vector3PropertyBinders.Clone();
+            set => _vector3PropertyBinders = value;
         }
 
-        if (currentModel!=null)
+
+        #endregion
+
+        // Local Variable which will be synced with the network. 
+        // Property binders will subscribe to this value to be in sync. 
+        [HideInInspector] public Vector3 localVector3Value;
+
+        #region Normcore Realtime Logic
+
+        protected override void OnRealtimeModelReplaced(RealtimeVector3Model previousModel,
+            RealtimeVector3Model currentModel)
         {
-            if (!currentModel.isFreshModel)
+            if (previousModel != null)
             {
-                UpdateVector3Property();
+                previousModel.vector3PropertyDidChange -= ModelOnvector3PropertyDidChange;
             }
-            currentModel.vector3PropertyDidChange += ModelOnvector3PropertyDidChange; 
-        }
-    }
 
-    private void UpdateVector3Property()
-    {
-        localVector3Value = this.model.vector3Property;
-        if (_vector3PropertyBinders != null)
-        {
-            foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+            if (currentModel != null)
             {
-                vector3PropertyBinder.vector3Property = localVector3Value; 
-            }
-        }
-    }
-
-    private void ModelOnvector3PropertyDidChange(RealtimeVector3Model realtimeVector3Model, Vector3 value)
-    {
-        UpdateVector3Property();
-    }
-    
-    #endregion
-   
-    #region MonoBehaviour Functions
-    private void Awake()
-    {
-        if (_vector3PropertyBinders != null)
-        {
-            localVector3Value = _vector3PropertyBinders[0].vector3Property;
-            foreach (var vector3PropertyBinder in _vector3PropertyBinders)
-            {
-                vector3PropertyBinder.vector3Property = localVector3Value; 
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (_vector3PropertyBinders!=null)
-        {
-            foreach (var vector3PropertyBinder in _vector3PropertyBinders)
-            {
-                if (vector3PropertyBinder.vector3Property != localVector3Value || (this.model!=null && this.model.vector3Property != localVector3Value))
+                if (!currentModel.isFreshModel)
                 {
-                    localVector3Value = vector3PropertyBinder.vector3Property;
-                    if (this.model != null)
+                    UpdateVector3Property();
+                }
+
+                currentModel.vector3PropertyDidChange += ModelOnvector3PropertyDidChange;
+            }
+        }
+
+        private void UpdateVector3Property()
+        {
+            localVector3Value = this.model.vector3Property;
+            if (_vector3PropertyBinders != null)
+            {
+                foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+                {
+                    vector3PropertyBinder.vector3Property = localVector3Value;
+                }
+            }
+        }
+
+        private void ModelOnvector3PropertyDidChange(RealtimeVector3Model realtimeVector3Model, Vector3 value)
+        {
+            UpdateVector3Property();
+        }
+
+        #endregion
+
+        #region MonoBehaviour Functions
+
+        private void Awake()
+        {
+            if (_vector3PropertyBinders != null)
+            {
+                localVector3Value = _vector3PropertyBinders[0].vector3Property;
+                foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+                {
+                    vector3PropertyBinder.vector3Property = localVector3Value;
+                }
+            }
+        }
+
+        private void Update()
+        {
+            if (_vector3PropertyBinders != null)
+            {
+                foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+                {
+                    if (vector3PropertyBinder.vector3Property != localVector3Value ||
+                        (this.model != null && this.model.vector3Property != localVector3Value))
                     {
-                        this.model.vector3Property = localVector3Value; 
+                        localVector3Value = vector3PropertyBinder.vector3Property;
+                        if (this.model != null)
+                        {
+                            this.model.vector3Property = localVector3Value;
+                        }
                     }
                 }
             }
         }
-    }
-    
 
-    #endregion
-  
+
+        #endregion
+
+    }
 }

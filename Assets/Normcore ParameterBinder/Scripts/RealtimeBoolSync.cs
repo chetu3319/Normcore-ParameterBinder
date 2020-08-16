@@ -29,94 +29,104 @@
 using Normal.Realtime;
 using UnityEngine;
 
-[RequireComponent(typeof(RealtimeView))]
-public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
+namespace Normal.ParameterBinder
 {
-
-    #region Property Binders
-    [SerializeReference] [HideInInspector] BoolPropertyBinder[] _boolPropertyBinders = null;
-    
-    
-    public BoolPropertyBinder[] PropertyBinders
+    [RequireComponent(typeof(RealtimeView))]
+    public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
     {
-        get => (BoolPropertyBinder[])_boolPropertyBinders.Clone();
-        set => _boolPropertyBinders = value;
-    }
-    #endregion
-    
-    // Local Variable which will be synced with the network. 
-    // Property binders will subscribe to this value to be in sync. 
-    [HideInInspector]
-    public bool localBoolValue;
 
-    #region Normcore Realtime Logic
-    protected override void OnRealtimeModelReplaced(RealtimeBoolModel previousModel, RealtimeBoolModel currentModel)
-    {
-        if (previousModel != null)
+        #region Property Binders
+
+        [SerializeReference] [HideInInspector] BoolPropertyBinder[] _boolPropertyBinders = null;
+
+
+        public BoolPropertyBinder[] PropertyBinders
         {
-            previousModel.boolPropertyDidChange -= ModelOnboolPropertyDidChange; 
+            get => (BoolPropertyBinder[]) _boolPropertyBinders.Clone();
+            set => _boolPropertyBinders = value;
         }
 
-        if (currentModel != null)
+        #endregion
+
+        // Local Variable which will be synced with the network. 
+        // Property binders will subscribe to this value to be in sync. 
+        [HideInInspector] public bool localBoolValue;
+
+        #region Normcore Realtime Logic
+
+        protected override void OnRealtimeModelReplaced(RealtimeBoolModel previousModel, RealtimeBoolModel currentModel)
         {
-            if (!currentModel.isFreshModel)
+            if (previousModel != null)
             {
-                UpdateBoolProperty();
+                previousModel.boolPropertyDidChange -= ModelOnboolPropertyDidChange;
             }
 
-            currentModel.boolPropertyDidChange += ModelOnboolPropertyDidChange; 
-        }
-    }
-
-    private void UpdateBoolProperty()
-    {
-        localBoolValue = this.model.boolProperty;
-        if (_boolPropertyBinders != null)
-        {
-            foreach (var propertyBinder in _boolPropertyBinders)
+            if (currentModel != null)
             {
-                propertyBinder.boolProperty = localBoolValue;
-            }
-        }
-    }
-
-    private void ModelOnboolPropertyDidChange(RealtimeBoolModel normcoreBoolModel, bool value)
-    {
-        UpdateBoolProperty();
-    }
-    #endregion
-    
-    #region MonoBehaviour Functions
-    private void Awake()
-    {
-        if (_boolPropertyBinders != null)
-        {
-            localBoolValue = _boolPropertyBinders[0].boolProperty; 
-            foreach (var boolPropertyBinder in _boolPropertyBinders)
-            {
-                boolPropertyBinder.boolProperty = localBoolValue; 
-            }
-        }
-
-       
-    }
-
-    private void Update()
-    {
-        if (_boolPropertyBinders != null)
-        {
-            foreach (var propertyBinder in _boolPropertyBinders)
-            {
-                if (propertyBinder.boolProperty != localBoolValue || (this.model != null && this.model.boolProperty != localBoolValue))
+                if (!currentModel.isFreshModel)
                 {
-                    localBoolValue = propertyBinder.boolProperty;
-                    if (this.model != null)
+                    UpdateBoolProperty();
+                }
+
+                currentModel.boolPropertyDidChange += ModelOnboolPropertyDidChange;
+            }
+        }
+
+        private void UpdateBoolProperty()
+        {
+            localBoolValue = this.model.boolProperty;
+            if (_boolPropertyBinders != null)
+            {
+                foreach (var propertyBinder in _boolPropertyBinders)
+                {
+                    propertyBinder.boolProperty = localBoolValue;
+                }
+            }
+        }
+
+        private void ModelOnboolPropertyDidChange(RealtimeBoolModel normcoreBoolModel, bool value)
+        {
+            UpdateBoolProperty();
+        }
+
+        #endregion
+
+        #region MonoBehaviour Functions
+
+        private void Awake()
+        {
+            if (_boolPropertyBinders != null)
+            {
+                localBoolValue = _boolPropertyBinders[0].boolProperty;
+                foreach (var boolPropertyBinder in _boolPropertyBinders)
+                {
+                    boolPropertyBinder.boolProperty = localBoolValue;
+                }
+            }
+
+
+        }
+
+        private void Update()
+        {
+            if (_boolPropertyBinders != null)
+            {
+                foreach (var propertyBinder in _boolPropertyBinders)
+                {
+                    if (propertyBinder.boolProperty != localBoolValue ||
+                        (this.model != null && this.model.boolProperty != localBoolValue))
                     {
-                        this.model.boolProperty = localBoolValue; 
+                        localBoolValue = propertyBinder.boolProperty;
+                        if (this.model != null)
+                        {
+                            this.model.boolProperty = localBoolValue;
+                        }
                     }
                 }
             }
         }
+
+        #endregion
     }
-    #endregion
+
 }

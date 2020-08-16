@@ -29,91 +29,102 @@
 using Normal.Realtime;
 using UnityEngine;
 
-[RequireComponent(typeof(RealtimeView))]
-public class RealtimeColorSync : RealtimeComponent<RealtimeColorModel>
+namespace Normal.ParameterBinder
 {
-
-    #region Property Binders
-    [SerializeReference] [HideInInspector] ColorPropertyBinder[] _colorPropertyBinders = null;
-
-    public ColorPropertyBinder[] PropertyBinders
+    [RequireComponent(typeof(RealtimeView))]
+    public class RealtimeColorSync : RealtimeComponent<RealtimeColorModel>
     {
-        get => (ColorPropertyBinder[]) _colorPropertyBinders.Clone();
-        set => _colorPropertyBinders = value;
-    }
-    #endregion
-    
-    // Local Variable which will be synced with the network. 
-    // Property binders will subscribe to this value to be in sync. 
-    [HideInInspector]
-    public Color localColorValue;
 
-    #region Normcore Realtime Logic
-    protected override void OnRealtimeModelReplaced(RealtimeColorModel previousModel, RealtimeColorModel currentModel)
-    {
-        if (previousModel != null)
+        #region Property Binders
+
+        [SerializeReference] [HideInInspector] ColorPropertyBinder[] _colorPropertyBinders = null;
+
+        public ColorPropertyBinder[] PropertyBinders
         {
-            previousModel.colorPropertyDidChange -= ModelOnColorPropertyDidChange; 
+            get => (ColorPropertyBinder[]) _colorPropertyBinders.Clone();
+            set => _colorPropertyBinders = value;
         }
 
-        if (currentModel != null)
+        #endregion
+
+        // Local Variable which will be synced with the network. 
+        // Property binders will subscribe to this value to be in sync. 
+        [HideInInspector] public Color localColorValue;
+
+        #region Normcore Realtime Logic
+
+        protected override void OnRealtimeModelReplaced(RealtimeColorModel previousModel,
+            RealtimeColorModel currentModel)
         {
-            if (!currentModel.isFreshModel)
+            if (previousModel != null)
             {
-                UpdateColorProperty();
+                previousModel.colorPropertyDidChange -= ModelOnColorPropertyDidChange;
             }
 
-            currentModel.colorPropertyDidChange += ModelOnColorPropertyDidChange; 
-        }
-    }
-
-    private void UpdateColorProperty()
-    {
-        localColorValue = this.model.colorProperty;
-        if (_colorPropertyBinders != null)
-        {
-            foreach (var propertyBinder in _colorPropertyBinders)
+            if (currentModel != null)
             {
-                propertyBinder.colorProperty = localColorValue;
-            }
-        }
-    }
-
-    private void ModelOnColorPropertyDidChange(RealtimeColorModel normcoreBoolModel, Color value)
-    {
-        UpdateColorProperty();
-    }
-    #endregion
-    
-    #region MonoBehaviour Functions
-    private void Awake()
-    {
-        if (_colorPropertyBinders != null)
-        {
-            localColorValue = _colorPropertyBinders[0].colorProperty; 
-            foreach (var boolPropertyBinder in _colorPropertyBinders)
-            {
-                boolPropertyBinder.colorProperty = localColorValue; 
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (_colorPropertyBinders != null)
-        {
-            foreach (var propertyBinder in _colorPropertyBinders)
-            {
-                if (propertyBinder.colorProperty != localColorValue || (this.model != null && this.model.colorProperty != localColorValue))
+                if (!currentModel.isFreshModel)
                 {
-                    localColorValue = propertyBinder.colorProperty;
-                    if (this.model != null)
+                    UpdateColorProperty();
+                }
+
+                currentModel.colorPropertyDidChange += ModelOnColorPropertyDidChange;
+            }
+        }
+
+        private void UpdateColorProperty()
+        {
+            localColorValue = this.model.colorProperty;
+            if (_colorPropertyBinders != null)
+            {
+                foreach (var propertyBinder in _colorPropertyBinders)
+                {
+                    propertyBinder.colorProperty = localColorValue;
+                }
+            }
+        }
+
+        private void ModelOnColorPropertyDidChange(RealtimeColorModel normcoreBoolModel, Color value)
+        {
+            UpdateColorProperty();
+        }
+
+        #endregion
+
+        #region MonoBehaviour Functions
+
+        private void Awake()
+        {
+            if (_colorPropertyBinders != null)
+            {
+                localColorValue = _colorPropertyBinders[0].colorProperty;
+                foreach (var boolPropertyBinder in _colorPropertyBinders)
+                {
+                    boolPropertyBinder.colorProperty = localColorValue;
+                }
+            }
+        }
+
+        private void Update()
+        {
+            if (_colorPropertyBinders != null)
+            {
+                foreach (var propertyBinder in _colorPropertyBinders)
+                {
+                    if (propertyBinder.colorProperty != localColorValue ||
+                        (this.model != null && this.model.colorProperty != localColorValue))
                     {
-                        this.model.colorProperty = localColorValue; 
+                        localColorValue = propertyBinder.colorProperty;
+                        if (this.model != null)
+                        {
+                            this.model.colorProperty = localColorValue;
+                        }
                     }
                 }
             }
         }
+
+        #endregion
     }
-    #endregion
+
 }

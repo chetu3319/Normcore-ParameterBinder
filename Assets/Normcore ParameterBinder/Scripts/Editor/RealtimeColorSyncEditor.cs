@@ -30,31 +30,35 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(RealtimeColorSync))]
-public class RealtimeColorSyncEditor : Editor
+namespace Normal.ParameterBinder
 {
-    PropertyBinderEditor _propertyBinderEditor;
-    private PropertyBinderEditor _floatPropertyBinderEditor;
-    
-    private void OnEnable()
+    [CustomEditor(typeof(RealtimeColorSync))]
+    public class RealtimeColorSyncEditor : Editor
     {
-        _propertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_colorPropertyBinders"), "Color");
-    }
+        PropertyBinderEditor _propertyBinderEditor;
+        private PropertyBinderEditor _floatPropertyBinderEditor;
 
-    public override bool RequiresConstantRepaint()
-    {
-        return EditorApplication.isPlaying && targets.Length == 1; 
-    }
-
-    public override void OnInspectorGUI()
-    {
-        RealtimeColorSync data = (RealtimeColorSync) target;
-        base.OnInspectorGUI();
-        GUILayout.Label("Color Value is: " + data.localColorValue);
-        
-        if (targets.Length == 1 )
+        private void OnEnable()
         {
-            _propertyBinderEditor.ShowGUI();
+            _propertyBinderEditor =
+                new PropertyBinderEditor(serializedObject.FindProperty("_colorPropertyBinders"), "Color");
+        }
+
+        public override bool RequiresConstantRepaint()
+        {
+            return EditorApplication.isPlaying && targets.Length == 1;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            RealtimeColorSync data = (RealtimeColorSync) target;
+            base.OnInspectorGUI();
+            GUILayout.Label("Color Value is: " + data.localColorValue);
+
+            if (targets.Length == 1)
+            {
+                _propertyBinderEditor.ShowGUI();
+            }
         }
     }
 }

@@ -27,39 +27,45 @@
 //------------------------------------------------------------------------------ -
 #endregion
 
+using Normal.ParameterBinder;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-[CustomEditor(typeof(RealtimeBoolSync))]
-public class RealtimeBoolSyncEditor : UnityEditor.Editor
+namespace Normal.ParameterBinder
 {
-    PropertyBinderEditor _propertyBinderEditor;
-    private PropertyBinderEditor _floatPropertyBinderEditor; 
-    private void OnEnable()
+    [CustomEditor(typeof(RealtimeBoolSync))]
+    public class RealtimeBoolSyncEditor : Editor
     {
-        var finder = new PropertyFinder(serializedObject);
-        
-        _propertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_boolPropertyBinders"), "bool");
-       
-    
-    }
+        PropertyBinderEditor _propertyBinderEditor;
+        private PropertyBinderEditor _floatPropertyBinderEditor;
 
-    public override bool RequiresConstantRepaint()
-    {
-        return EditorApplication.isPlaying && targets.Length == 1; 
-    }
-
-    public override void OnInspectorGUI()
-    {
-        RealtimeBoolSync data = (RealtimeBoolSync) target;
-        base.OnInspectorGUI();
-        GUILayout.Label("Bool Value is: " + data.localBoolValue);
-        
-        if (targets.Length == 1 )
+        private void OnEnable()
         {
-            _propertyBinderEditor.ShowGUI();
+            var finder = new PropertyFinder(serializedObject);
+
+            _propertyBinderEditor =
+                new PropertyBinderEditor(serializedObject.FindProperty("_boolPropertyBinders"), "bool");
+
+
         }
-        
+
+        public override bool RequiresConstantRepaint()
+        {
+            return EditorApplication.isPlaying && targets.Length == 1;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            RealtimeBoolSync data = (RealtimeBoolSync) target;
+            base.OnInspectorGUI();
+            GUILayout.Label("Bool Value is: " + data.localBoolValue);
+
+            if (targets.Length == 1)
+            {
+                _propertyBinderEditor.ShowGUI();
+            }
+
+        }
     }
 }

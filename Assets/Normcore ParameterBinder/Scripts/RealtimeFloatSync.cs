@@ -30,91 +30,105 @@
 using Normal.Realtime; 
 using UnityEngine;
 
-[RequireComponent(typeof(RealtimeView))]
-public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
+namespace Normal.ParameterBinder
 {
-    #region Property Binders
-    [SerializeReference] [HideInInspector] private FloatPropertyBinder[] _floatPropertyBinders = null;
-
-    public FloatPropertyBinder[] FloatPropertyBinders
+    [RequireComponent(typeof(RealtimeView))]
+    public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>
     {
-        get => (FloatPropertyBinder[])_floatPropertyBinders.Clone();
-        set => _floatPropertyBinders = value;
-    }
-    #endregion
-    
-    // Local Variable which will be synced with the network. 
-    // Property binders will subscribe to this value to be in sync. 
-    [HideInInspector] public float localFloatValue;
-    
-    #region Normcore Realtime Logic
-    private void UpdateFloatProperty()
-    {
-       localFloatValue = this.model.floatProperty;
-       if (_floatPropertyBinders != null)
-       {
-           foreach (var floatPropertyBinder in _floatPropertyBinders)
-           {
-               floatPropertyBinder.floatProperty = localFloatValue;
-           }
-       }
-    }
+        #region Property Binders
 
-    private void ModelOnfloatPropertyDidChange(RealtimeFloatModel normcoreFloatModel, float value)
-    {
-        UpdateFloatProperty();
-    }
+        [SerializeReference] [HideInInspector] private FloatPropertyBinder[] _floatPropertyBinders = null;
 
-  
-
-    protected override void OnRealtimeModelReplaced(RealtimeFloatModel previousModel, RealtimeFloatModel currentModel) {
-        if (previousModel != null)
+        public FloatPropertyBinder[] FloatPropertyBinders
         {
-            previousModel.floatPropertyDidChange -= ModelOnfloatPropertyDidChange;
+            get => (FloatPropertyBinder[]) _floatPropertyBinders.Clone();
+            set => _floatPropertyBinders = value;
         }
-  
-        if (currentModel != null)
+
+        #endregion
+
+        // Local Variable which will be synced with the network. 
+        // Property binders will subscribe to this value to be in sync. 
+        [HideInInspector] public float localFloatValue;
+
+        #region Normcore Realtime Logic
+
+        private void UpdateFloatProperty()
         {
-            if (!currentModel.isFreshModel)
-            { 
-                UpdateFloatProperty();
-            }
-            currentModel.floatPropertyDidChange += ModelOnfloatPropertyDidChange;
-        }
-    }
-    #endregion
-    
-    #region MonoBehaviour Functions
-    private void Awake()
-    {
-        if (_floatPropertyBinders != null)
-        {
-            localFloatValue = _floatPropertyBinders[0].floatProperty; 
-            foreach (var floatPropertyBinder in _floatPropertyBinders)
+            localFloatValue = this.model.floatProperty;
+            if (_floatPropertyBinders != null)
             {
-                floatPropertyBinder.floatProperty = localFloatValue; 
-            }
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (_floatPropertyBinders != null)        
-        {
-            foreach (var floatPropertyBinder in _floatPropertyBinders)
-            {
-                if (floatPropertyBinder.floatProperty != localFloatValue || (this.model!= null && this.model.floatProperty != localFloatValue))
+                foreach (var floatPropertyBinder in _floatPropertyBinders)
                 {
-                    localFloatValue = floatPropertyBinder.floatProperty;
-                    if (this.model != null)
+                    floatPropertyBinder.floatProperty = localFloatValue;
+                }
+            }
+        }
+
+        private void ModelOnfloatPropertyDidChange(RealtimeFloatModel normcoreFloatModel, float value)
+        {
+            UpdateFloatProperty();
+        }
+
+
+
+        protected override void OnRealtimeModelReplaced(RealtimeFloatModel previousModel,
+            RealtimeFloatModel currentModel)
+        {
+            if (previousModel != null)
+            {
+                previousModel.floatPropertyDidChange -= ModelOnfloatPropertyDidChange;
+            }
+
+            if (currentModel != null)
+            {
+                if (!currentModel.isFreshModel)
+                {
+                    UpdateFloatProperty();
+                }
+
+                currentModel.floatPropertyDidChange += ModelOnfloatPropertyDidChange;
+            }
+        }
+
+        #endregion
+
+        #region MonoBehaviour Functions
+
+        private void Awake()
+        {
+            if (_floatPropertyBinders != null)
+            {
+                localFloatValue = _floatPropertyBinders[0].floatProperty;
+                foreach (var floatPropertyBinder in _floatPropertyBinders)
+                {
+                    floatPropertyBinder.floatProperty = localFloatValue;
+                }
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (_floatPropertyBinders != null)
+            {
+                foreach (var floatPropertyBinder in _floatPropertyBinders)
+                {
+                    if (floatPropertyBinder.floatProperty != localFloatValue ||
+                        (this.model != null && this.model.floatProperty != localFloatValue))
                     {
-                        this.model.floatProperty = localFloatValue;
+                        localFloatValue = floatPropertyBinder.floatProperty;
+                        if (this.model != null)
+                        {
+                            this.model.floatProperty = localFloatValue;
+                        }
                     }
                 }
             }
         }
+
+        #endregion
+
     }
-    #endregion
-  
+
 }

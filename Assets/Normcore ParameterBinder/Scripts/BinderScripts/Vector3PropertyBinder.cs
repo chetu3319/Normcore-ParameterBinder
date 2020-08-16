@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -37,90 +38,87 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-//
-// Property binder classes used for driving properties of external objects
-//
-
-// Property binder base class
-[System.Serializable]
-public abstract class Vector3PropertyBinder
+namespace Normal.ParameterBinder
 {
-    public bool Enabled = true;
-
-    public Vector3 vector3Property
+    //
+    // Property binder classes used for driving properties of external objects
+    // Property binder base class
+    [System.Serializable]
+    public abstract class Vector3PropertyBinder
     {
-        get => OnGetProperty();
-        set
+        public bool Enabled = true;
+
+        public Vector3 vector3Property
         {
-            if (Enabled) OnSetProperty(value);
+            get => OnGetProperty();
+            set
+            {
+                if (Enabled) OnSetProperty(value);
+            }
+        }
+
+        protected abstract void OnSetProperty(Vector3 value);
+        protected abstract Vector3 OnGetProperty();
+    }
+
+    public abstract class GenericVector3PropertyBinder<T> : Vector3PropertyBinder
+    {
+        // Serialized target property information
+        public Component Target;
+        public string PropertyName;
+
+        // This field in only used in Editor to determine the target property
+        // type. Don't modify it after instantiation.
+        [SerializeField, HideInInspector] string _propertyType = typeof(T).AssemblyQualifiedName;
+
+        // Target property setter
+        protected T TargetProperty
+        {
+            get => (T) GetProperty(Target, PropertyName);
+            set => SetTargetProperty(value);
+        }
+
+        UnityAction<T> _setterCache;
+
+        private static object GetProperty(Component inObj, string fieldName)
+        {
+            object ret = null;
+            Type myObj = inObj.GetType();
+            PropertyInfo info = myObj.GetProperty(fieldName);
+
+            // FieldInfo info = inObj.GetType().GetField(fieldName);
+            if (info != null) ret = info.GetValue(inObj);
+            return ret;
+        }
+
+        void SetTargetProperty(T value)
+        {
+            if (_setterCache == null)
+            {
+                if (Target == null) return;
+                if (string.IsNullOrEmpty(PropertyName)) return;
+                _setterCache =
+                    (UnityAction<T>) System.Delegate.CreateDelegate(typeof(UnityAction<T>), Target,
+                        "set_" + PropertyName);
+            }
+
+            _setterCache(value);
         }
     }
 
-    protected abstract void OnSetProperty(Vector3 value);
-    protected abstract Vector3 OnGetProperty(); 
-}
-
-public abstract class GenericVector3PropertyBinder<T> : Vector3PropertyBinder
-{
-    // Serialized target property information
-    public Component Target;
-    public string PropertyName;
-
-    // This field in only used in Editor to determine the target property
-    // type. Don't modify it after instantiation.
-    [SerializeField, HideInInspector]
-    string _propertyType = typeof(T).AssemblyQualifiedName;
-
-    // Target property setter
-    protected T TargetProperty
+    public sealed class Vector3ValuePropertyBinder : GenericVector3PropertyBinder<Vector3>
     {
-        get => (T)GetProperty(Target, PropertyName);
-        set => SetTargetProperty(value);
-    }
+        // public float Value0 = 0;
+        // public float Value1 = 1.0f;
 
-    UnityAction<T> _setterCache;
-
-    private static object GetProperty(Component inObj, string fieldName)
-    {
-        object ret = null;
-        Type myObj = inObj.GetType();
-
-        PropertyInfo info = myObj.GetProperty(fieldName);
-        
-        // FieldInfo info = inObj.GetType().GetField(fieldName);
-        if (info != null)
-            ret = info.GetValue(inObj);
-        return ret;
-    }
-    void SetTargetProperty(T value)
-    {
-        if (_setterCache == null)
+        protected override void OnSetProperty(Vector3 value)
         {
-            if (Target == null) return;
-            if (string.IsNullOrEmpty(PropertyName)) return;
-          
-            _setterCache
-                = (UnityAction<T>)System.Delegate.CreateDelegate
-                    (typeof(UnityAction<T>), Target, "set_" + PropertyName);
+            TargetProperty = value;
         }
-        _setterCache(value);
-    }
-}
 
-public sealed class Vector3ValuePropertyBinder : GenericVector3PropertyBinder<Vector3>
-{
-    // public float Value0 = 0;
-    // public float Value1 = 1.0f;
-
-   
-    protected override void OnSetProperty(Vector3 value)
-    {
-       
-        TargetProperty = value;
-    }
-
-    protected override Vector3 OnGetProperty()
-    {
-        return TargetProperty; 
+        protected override Vector3 OnGetProperty()
+        {
+            return TargetProperty;
+        }
     }
 }
