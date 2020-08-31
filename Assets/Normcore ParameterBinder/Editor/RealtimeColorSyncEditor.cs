@@ -27,27 +27,21 @@
 //------------------------------------------------------------------------------ -
 #endregion
 
-using Normal.ParameterBinder;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
-    [CustomEditor(typeof(RealtimeBoolSync))]
-    public class RealtimeBoolSyncEditor : Editor
+    [CustomEditor(typeof(RealtimeColorSync))]
+    public class RealtimeColorSyncEditor : Editor
     {
         PropertyBinderEditor _propertyBinderEditor;
         private PropertyBinderEditor _floatPropertyBinderEditor;
 
         private void OnEnable()
         {
-            var finder = new PropertyFinder(serializedObject);
-
             _propertyBinderEditor =
-                new PropertyBinderEditor(serializedObject.FindProperty("_boolPropertyBinders"), "bool");
-
-
+                new PropertyBinderEditor(serializedObject.FindProperty("_colorPropertyBinders"), "Color");
         }
 
         public override bool RequiresConstantRepaint()
@@ -57,15 +51,14 @@ namespace Normal.ParameterBinder
 
         public override void OnInspectorGUI()
         {
-            RealtimeBoolSync data = (RealtimeBoolSync) target;
+            RealtimeColorSync data = (RealtimeColorSync) target;
             base.OnInspectorGUI();
-            GUILayout.Label("Bool Value is: " + data.localBoolValue);
+            GUILayout.Label("Color Value is: " + data.localColorValue);
 
             if (targets.Length == 1)
             {
                 _propertyBinderEditor.ShowGUI();
             }
-
         }
     }
 }

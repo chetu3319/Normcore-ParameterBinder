@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.77634895, g: 0.6352622, b: 0.10997629, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -356,7 +356,7 @@ Transform:
   - {fileID: 1176469636}
   - {fileID: 825921913}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342376401
 GameObject:
@@ -555,9 +555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obsoleteAppKey: 
-  _normcoreAppSettings: {fileID: 11400000, guid: 3323c80752069ce49b9f441446e2ed55,
-    type: 2}
-  _roomToJoinOnStart: Test Room
+  _normcoreAppSettings: {fileID: 0}
+  _roomToJoinOnStart: Parameter Binder
   _joinRoomOnStart: 1
   _debugLogging: 0
 --- !u!4 &541472584
@@ -572,7 +571,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603415867
 GameObject:
@@ -607,11 +606,12 @@ MonoBehaviour:
   _vector3PropertyBinders:
   - id: 0
   - id: 1
+  - id: 2
   localVector3Value: {x: 0, y: 0, z: 0}
   references:
     version: 1
     00000000:
-      type: {class: Vector3ValuePropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: Vector3ValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 998239709}
@@ -619,11 +619,19 @@ MonoBehaviour:
         _propertyType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     00000001:
-      type: {class: Vector3ValuePropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: Vector3ValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 1923674412}
         PropertyName: localScale
+        _propertyType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    00000002:
+      type: {class: Vector3ValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1792305468}
+        PropertyName: vector3Property
         _propertyType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
 --- !u!114 &603415869
@@ -646,7 +654,7 @@ MonoBehaviour:
   _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
   _isRootPrefabView: 0
   _components:
-  - componentID: 1
+  - componentID: 2
     component: {fileID: 603415868}
   _childViews: []
 --- !u!4 &603415870
@@ -656,12 +664,48 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603415867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1850779, y: -0.39992326, z: 11.415898}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -289.5851, y: -1541.6299, z: 11.415898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 652822742}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &652822741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652822742}
+  m_Layer: 0
+  m_Name: Network Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652822742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652822741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 288.40002, y: 1541.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1696832633}
+  - {fileID: 2091249755}
+  - {fileID: 603415870}
+  - {fileID: 1739517281}
+  - {fileID: 904724138}
+  - {fileID: 1677055763}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781111457
 GameObject:
@@ -895,6 +939,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 187163794}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &904724135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904724138}
+  - component: {fileID: 904724137}
+  - component: {fileID: 904724136}
+  m_Layer: 0
+  m_Name: String Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &904724136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904724135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b725480a01ae542a2fe8810f405d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stringPropertyBinders:
+  - id: 0
+  - id: 1
+  localStringValue: 
+  references:
+    version: 1
+    00000000:
+      type: {class: StringValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1178099015}
+        PropertyName: text
+        _propertyType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+    00000001:
+      type: {class: StringValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1792305468}
+        PropertyName: stringProperty
+        _propertyType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+--- !u!114 &904724137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904724135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: 30f4fd177e1fad742be136a8237ab587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 541472583}
+  _sceneViewUUID: 
+  _viewUUID: 579461c3-582e-4dfe-ae90-a5c6f6a50887
+  _sceneViewOwnedByCreatingClient: 1
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _isRootPrefabView: 0
+  _components:
+  - componentID: 2
+    component: {fileID: 904724136}
+  _childViews: []
+--- !u!4 &904724138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904724135}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -287.32553, y: -1540.6364, z: 10.650178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 652822742}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905920989
 GameObject:
@@ -1277,6 +1410,84 @@ Transform:
   m_Father: {fileID: 187163794}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1178099014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178099017}
+  - component: {fileID: 1178099016}
+  - component: {fileID: 1178099015}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1178099015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178099014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 29
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 53
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Hello World
+--- !u!222 &1178099016
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178099014}
+  m_CullTransparentMesh: 0
+--- !u!224 &1178099017
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178099014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children: []
+  m_Father: {fileID: 1595616357}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 150, y: -300}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1274271784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1775,7 @@ RectTransform:
   - {fileID: 1274271785}
   - {fileID: 1864906910}
   - {fileID: 905920990}
+  - {fileID: 1178099017}
   m_Father: {fileID: 1514094370}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1647,6 +1859,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615366102}
   m_CullTransparentMesh: 0
+--- !u!1 &1677055760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1677055763}
+  - component: {fileID: 1677055762}
+  - component: {fileID: 1677055761}
+  m_Layer: 0
+  m_Name: Int Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1677055761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677055760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d87425672da4b10b5e976ca61c3cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intPropertyBinders:
+  - id: 0
+  localIntValue: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: IntValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1792305468}
+        PropertyName: intProperty
+        _propertyType: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+--- !u!114 &1677055762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677055760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: 30f4fd177e1fad742be136a8237ab587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 541472583}
+  _sceneViewUUID: 
+  _viewUUID: c2a7fbc7-f1c1-455a-853d-8d963f441167
+  _sceneViewOwnedByCreatingClient: 1
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _isRootPrefabView: 0
+  _components:
+  - componentID: 2
+    component: {fileID: 1677055761}
+  _childViews: []
+--- !u!4 &1677055763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677055760}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 652822742}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696832632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,12 +1964,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696832632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -288.40002, y: -1541.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 652822742}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1696832634
 MonoBehaviour:
@@ -1694,11 +1986,12 @@ MonoBehaviour:
   _boolPropertyBinders:
   - id: 0
   - id: 1
-  localBoolValue: 1
+  - id: 2
+  localBoolValue: 0
   references:
     version: 1
     00000000:
-      type: {class: BoolValuePropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: BoolValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 998239711}
@@ -1706,11 +1999,19 @@ MonoBehaviour:
         _propertyType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
     00000001:
-      type: {class: BoolValuePropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: BoolValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 905920991}
         PropertyName: isOn
+        _propertyType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+    00000002:
+      type: {class: BoolValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1792305468}
+        PropertyName: booleanProperty
         _propertyType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
 --- !u!114 &1696832635
@@ -1727,13 +2028,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _realtime: {fileID: 541472583}
   _sceneViewUUID: 
-  _viewUUID: 6a5c3a64-bf5c-4639-af52-265ddbe72088
+  _viewUUID: 81a8976a-480c-40f6-b6e9-1f3f6d23ac20
   _sceneViewOwnedByCreatingClient: 0
   _sceneViewPreventOwnershipTakeover: 0
   _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
   _isRootPrefabView: 0
   _components:
-  - componentID: 1
+  - componentID: 2
     component: {fileID: 1696832634}
   _childViews: []
 --- !u!1 &1722368779
@@ -1804,15 +2105,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colorPropertyBinders:
   - id: 0
+  - id: 1
   localColorValue: {r: 0, g: 0, b: 0, a: 0}
   references:
     version: 1
     00000000:
-      type: {class: ColorValuePropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: ColorValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 1274271787}
         PropertyName: color
+        _propertyType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    00000001:
+      type: {class: ColorValuePropertyBinder, ns: chetu3319.ParameterBinder, asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1792305468}
+        PropertyName: colorProperty
         _propertyType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
 --- !u!114 &1739517280
@@ -1829,13 +2139,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _realtime: {fileID: 541472583}
   _sceneViewUUID: 
-  _viewUUID: 49969a0b-a965-4984-b926-88d92bade01e
-  _sceneViewOwnedByCreatingClient: 0
+  _viewUUID: e84821d2-3bd7-42ba-af56-e26f6d6fedda
+  _sceneViewOwnedByCreatingClient: 1
   _sceneViewPreventOwnershipTakeover: 0
   _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
   _isRootPrefabView: 0
   _components:
-  - componentID: 1
+  - componentID: 2
     component: {fileID: 1739517279}
   _childViews: []
 --- !u!4 &1739517281
@@ -1845,12 +2155,61 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739517278}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -289.5851, y: -1541.6299, z: 11.415898}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 652822742}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1792305467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792305469}
+  - component: {fileID: 1792305468}
+  m_Layer: 0
+  m_Name: Debug Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1792305468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792305467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484f5f12655fd4f40b1d9db8fda53146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _int: 0
+  _float: 0
+  _color: {r: 0, g: 0, b: 0, a: 0}
+  _string: 
+  _bool: 0
+  _vector3: {x: 0, y: 0, z: 0}
+--- !u!4 &1792305469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792305467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1850779, y: -0.39992326, z: 11.415898}
+  m_LocalPosition: {x: 288.40002, y: 1541.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1864906909
 GameObject:
@@ -2321,7 +2680,8 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: ConnectFloatToVector3PropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: ConnectFloatToVector3PropertyBinder, ns: chetu3319.ParameterBinder,
+        asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 170751828}
@@ -2329,19 +2689,21 @@ MonoBehaviour:
         _propertyType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     00000001:
-      type: {class: ConnectFloatToVector3PropertyBinder, ns: , asm: Assembly-CSharp}
-      data:
-        Enabled: 1
-        Target: {fileID: 342376402}
-        PropertyName: localScale
-        _propertyType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-    00000002:
-      type: {class: ConnectFloatToFloatPropertyBinder, ns: , asm: Assembly-CSharp}
+      type: {class: ConnectFloatToFloatPropertyBinder, ns: chetu3319.ParameterBinder,
+        asm: Assembly-CSharp}
       data:
         Enabled: 1
         Target: {fileID: 1864906911}
         PropertyName: value
+        _propertyType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+    00000002:
+      type: {class: ConnectFloatToFloatPropertyBinder, ns: chetu3319.ParameterBinder,
+        asm: Assembly-CSharp}
+      data:
+        Enabled: 1
+        Target: {fileID: 1792305468}
+        PropertyName: floatProperty
         _propertyType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
 --- !u!4 &2091249755
@@ -2351,12 +2713,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091249753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1850779, y: -0.39992326, z: 11.415898}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -289.5851, y: -1541.6299, z: 11.415898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 652822742}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2091249756
 MonoBehaviour:
@@ -2372,13 +2734,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _realtime: {fileID: 541472583}
   _sceneViewUUID: 
-  _viewUUID: a61e9101-54f0-4b9d-9578-a895b2131830
-  _sceneViewOwnedByCreatingClient: 0
+  _viewUUID: f725ee79-0deb-4970-8280-dbe445fe8ee3
+  _sceneViewOwnedByCreatingClient: 1
   _sceneViewPreventOwnershipTakeover: 0
   _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
   _isRootPrefabView: 0
   _components:
-  - componentID: 1
+  - componentID: 2
     component: {fileID: 2091249754}
   _childViews: []
 --- !u!1 &2147134154

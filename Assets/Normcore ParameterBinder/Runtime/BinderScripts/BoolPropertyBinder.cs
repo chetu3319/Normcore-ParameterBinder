@@ -38,30 +38,36 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     //
-    // Property binder classes used for driving properties of external objects
-    // Property binder base class
+// Property binder classes used for driving properties of external objects
+//
+
+// Property binder base class
     [System.Serializable]
-    public abstract class Vector3PropertyBinder
+    public abstract class BoolPropertyBinder
     {
+        // Enable switch
         public bool Enabled = true;
 
-        public Vector3 vector3Property
+        // Audio level property (setter only)
+        public bool boolProperty
         {
-            get => OnGetProperty();
+            get { return OnGetLevel(); }
             set
             {
-                if (Enabled) OnSetProperty(value);
+                if (Enabled) OnSetLevel(value);
             }
         }
 
-        protected abstract void OnSetProperty(Vector3 value);
-        protected abstract Vector3 OnGetProperty();
+        // Binder implementation
+        protected abstract void OnSetLevel(bool level);
+        protected abstract bool OnGetLevel();
     }
 
-    public abstract class GenericVector3PropertyBinder<T> : Vector3PropertyBinder
+// Generic intermediate implementation
+    public abstract class GenericBoolPropertyBinder<T> : BoolPropertyBinder
     {
         // Serialized target property information
         public Component Target;
@@ -74,7 +80,7 @@ namespace Normal.ParameterBinder
         // Target property setter
         protected T TargetProperty
         {
-            get => (T) GetProperty(Target, PropertyName);
+            get { return (T) GetProperty(Target, PropertyName); }
             set => SetTargetProperty(value);
         }
 
@@ -106,17 +112,18 @@ namespace Normal.ParameterBinder
         }
     }
 
-    public sealed class Vector3ValuePropertyBinder : GenericVector3PropertyBinder<Vector3>
+//Binder for Boolean Values
+    public sealed class BoolValuePropertyBinder : GenericBoolPropertyBinder<bool>
     {
-        // public float Value0 = 0;
-        // public float Value1 = 1.0f;
+        // public bool Value0 = false;
+        // public bool Value1 = true;
 
-        protected override void OnSetProperty(Vector3 value)
+        protected override void OnSetLevel(bool level)
         {
-            TargetProperty = value;
+            TargetProperty = level;
         }
 
-        protected override Vector3 OnGetProperty()
+        protected override bool OnGetLevel()
         {
             return TargetProperty;
         }

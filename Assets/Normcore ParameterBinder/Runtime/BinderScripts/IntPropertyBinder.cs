@@ -38,7 +38,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     [System.Serializable]
     public abstract class IntPropertyBinder

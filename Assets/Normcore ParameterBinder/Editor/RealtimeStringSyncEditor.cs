@@ -30,18 +30,20 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
-    [CustomEditor(typeof(RealtimeColorSync))]
-    public class RealtimeColorSyncEditor : Editor
+    [CustomEditor(typeof(RealtimeStringSync))]
+    public class RealtimeStringSyncEditor : Editor
     {
         PropertyBinderEditor _propertyBinderEditor;
         private PropertyBinderEditor _floatPropertyBinderEditor;
 
         private void OnEnable()
         {
+            var finder = new PropertyFinder(serializedObject);
+
             _propertyBinderEditor =
-                new PropertyBinderEditor(serializedObject.FindProperty("_colorPropertyBinders"), "Color");
+                new PropertyBinderEditor(serializedObject.FindProperty("_stringPropertyBinders"), "string");
         }
 
         public override bool RequiresConstantRepaint()
@@ -51,9 +53,9 @@ namespace Normal.ParameterBinder
 
         public override void OnInspectorGUI()
         {
-            RealtimeColorSync data = (RealtimeColorSync) target;
+            RealtimeStringSync data = (RealtimeStringSync) target;
             base.OnInspectorGUI();
-            GUILayout.Label("Color Value is: " + data.localColorValue);
+            GUILayout.Label("String Value is: " + data.localStringValue);
 
             if (targets.Length == 1)
             {

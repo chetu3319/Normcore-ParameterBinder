@@ -38,36 +38,27 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
-    //
-// Property binder classes used for driving properties of external objects
-//
-
-// Property binder base class
-    [System.Serializable]
-    public abstract class BoolPropertyBinder
+    [Serializable]
+    public abstract class FloatPropertyBinder
     {
-        // Enable switch
         public bool Enabled = true;
 
-        // Audio level property (setter only)
-        public bool boolProperty
+        public float floatProperty
         {
-            get { return OnGetLevel(); }
+            get => OnGetLevel();
             set
             {
                 if (Enabled) OnSetLevel(value);
             }
         }
 
-        // Binder implementation
-        protected abstract void OnSetLevel(bool level);
-        protected abstract bool OnGetLevel();
+        protected abstract void OnSetLevel(float level);
+        protected abstract float OnGetLevel();
     }
 
-// Generic intermediate implementation
-    public abstract class GenericBoolPropertyBinder<T> : BoolPropertyBinder
+    public abstract class GenericFloatPropertyBinder<T> : FloatPropertyBinder
     {
         // Serialized target property information
         public Component Target;
@@ -80,7 +71,7 @@ namespace Normal.ParameterBinder
         // Target property setter
         protected T TargetProperty
         {
-            get { return (T) GetProperty(Target, PropertyName); }
+            get => (T) GetProperty(Target, PropertyName);
             set => SetTargetProperty(value);
         }
 
@@ -88,13 +79,13 @@ namespace Normal.ParameterBinder
 
         private static object GetProperty(Component inObj, string fieldName)
         {
-            object ret = null;
+            object propertyValue = null;
             Type myObj = inObj.GetType();
             PropertyInfo info = myObj.GetProperty(fieldName);
 
             // FieldInfo info = inObj.GetType().GetField(fieldName);
-            if (info != null) ret = info.GetValue(inObj);
-            return ret;
+            if (info != null) propertyValue = info.GetValue(inObj);
+            return propertyValue;
         }
 
         void SetTargetProperty(T value)
@@ -104,28 +95,36 @@ namespace Normal.ParameterBinder
                 if (Target == null) return;
                 if (string.IsNullOrEmpty(PropertyName)) return;
                 _setterCache =
-                    (UnityAction<T>) System.Delegate.CreateDelegate(typeof(UnityAction<T>), Target,
-                        "set_" + PropertyName);
+                    (UnityAction<T>) Delegate.CreateDelegate(typeof(UnityAction<T>), Target, "set_" + PropertyName);
             }
 
             _setterCache(value);
         }
     }
 
-//Binder for Boolean Values
-    public sealed class BoolValuePropertyBinder : GenericBoolPropertyBinder<bool>
+    public sealed class ConnectFloatToFloatPropertyBinder : GenericFloatPropertyBinder<float>
     {
-        // public bool Value0 = false;
-        // public bool Value1 = true;
-
-        protected override void OnSetLevel(bool level)
+        protected override void OnSetLevel(float level)
         {
             TargetProperty = level;
         }
 
-        protected override bool OnGetLevel()
+        protected override float OnGetLevel()
         {
             return TargetProperty;
+        }
+    }
+
+    public sealed class ConnectFloatToVector3PropertyBinder : GenericFloatPropertyBinder<Vector3>
+    {
+        protected override void OnSetLevel(float level)
+        {
+            TargetProperty = new Vector3(level, level, level);
+        }
+
+        protected override float OnGetLevel()
+        {
+            return TargetProperty.x;
         }
     }
 }

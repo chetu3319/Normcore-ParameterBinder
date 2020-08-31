@@ -1,12 +1,8 @@
-#region License
+﻿#region License
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
 //------------------------------------------------------------------------------ -
-// Original Author: Keijiro Takahashi
-// Gituhb Repo: https://github.com/keijiro/Lasp/blob/v2/Packages/jp.keijiro.lasp/Runtime/PropertyBinder.cs
-//------------------------------------------------------------------------------ -
-//
 // MIT License
 //
 // Copyright (c) 2020 Chaitanya Shah
@@ -29,59 +25,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
-
 #endregion
+
 using UnityEngine;
 using UnityEditor;
 
-// Simple string label with GUIContent
-struct Label
+namespace chetu3319.ParameterBinder
 {
-    GUIContent _guiContent;
+    [CustomEditor(typeof(RealtimeVector3Sync))]
+    public class RealtimeVector3SyncEditor : Editor
+    {
+        private PropertyBinderEditor _vector3PropertyBinderEditor;
 
-    public static implicit operator GUIContent(Label label)
-      => label._guiContent;
+        private void OnEnable()
+        {
+            var finder = new PropertyFinder(serializedObject);
 
-    public static implicit operator Label(string text)
-      => new Label { _guiContent = new GUIContent(text) };
-}
+            _vector3PropertyBinderEditor =
+                new PropertyBinderEditor(serializedObject.FindProperty("_vector3PropertyBinders"), "Vector3");
 
-// Utilities for finding serialized properties
-struct PropertyFinder
-{
-    SerializedObject _so;
+        }
 
-    public PropertyFinder(SerializedObject so)
-      => _so = so;
+        public override bool RequiresConstantRepaint()
+        {
+            return EditorApplication.isPlaying && targets.Length == 1;
+        }
 
-    public SerializedProperty this[string name]
-      => _so.FindProperty(name);
-}
-
-struct RelativePropertyFinder
-{
-    SerializedProperty _sp;
-
-    public RelativePropertyFinder(SerializedProperty sp)
-      => _sp = sp;
-
-    public SerializedProperty this[string name]
-      => _sp.FindPropertyRelative(name);
-}
-
-static class PropertyBinderNameUtil
-{
-    public static string Shorten(SerializedProperty prop)
-      => ObjectNames.NicifyVariableName(
-           prop.managedReferenceFullTypename
-           .Replace("Assembly-CSharp", ""));
-}
-
-static class PropertyBinderTypeLabel<T>
-{
-    static public GUIContent Content => _gui;
-    static GUIContent _gui = new GUIContent
-      (ObjectNames.NicifyVariableName(typeof(T).Name)
-         .Replace("Property Binder", ""));
+        public override void OnInspectorGUI()
+        {
+            RealtimeVector3Sync data = (RealtimeVector3Sync) target;
+            base.OnInspectorGUI();
+            GUILayout.Label("Local Vector3 Value: " + data.localVector3Value);
+            if (targets.Length == 1)
+            {
+                _vector3PropertyBinderEditor.ShowGUI();
+            }
+        }
+    }
 }
 

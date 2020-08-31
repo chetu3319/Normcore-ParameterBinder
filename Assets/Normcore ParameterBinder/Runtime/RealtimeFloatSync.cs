@@ -30,7 +30,7 @@
 using Normal.Realtime; 
 using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     [RequireComponent(typeof(RealtimeView))]
     public class RealtimeFloatSync : RealtimeComponent<RealtimeFloatModel>

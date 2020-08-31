@@ -26,40 +26,37 @@
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
 #endregion
-
 using UnityEngine;
 using UnityEditor;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
-    [CustomEditor(typeof(RealtimeFloatSync))]
-    public class RealtimeFloatSyncEditor : Editor
+    [CustomEditor(typeof(RealtimeIntSync))]
+    public class RealtimeIntSyncEditor : Editor
     {
-        private PropertyBinderEditor _floatPropertyBinderEditor;
+        private PropertyBinderEditor _intPropertyBinderEditor;
 
         private void OnEnable()
         {
-            var finder = new PropertyFinder(serializedObject);
-
-            _floatPropertyBinderEditor =
-                new PropertyBinderEditor(serializedObject.FindProperty("_floatPropertyBinders"), "float");
-
+            _intPropertyBinderEditor = new PropertyBinderEditor(serializedObject.FindProperty("_intPropertyBinders" ),"int");
         }
 
         public override bool RequiresConstantRepaint()
         {
             return EditorApplication.isPlaying && targets.Length == 1;
-
         }
 
         public override void OnInspectorGUI()
         {
-            RealtimeFloatSync data = (RealtimeFloatSync) target;
+            RealtimeIntSync data = (RealtimeIntSync) target; 
             base.OnInspectorGUI();
-            GUILayout.Label("Local Float Value: " + data.localFloatValue);
+            if (Application.isPlaying)
+            {
+                GUILayout.Label("Local Int Value: " + data.localIntValue);
+            }
             if (targets.Length == 1)
             {
-                _floatPropertyBinderEditor.ShowGUI();
+                _intPropertyBinderEditor.ShowGUI();
             }
         }
     }

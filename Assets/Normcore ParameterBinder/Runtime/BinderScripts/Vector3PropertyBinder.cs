@@ -38,36 +38,30 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     //
-// Property binder classes used for driving properties of external objects
-//
-
-// Property binder base class
+    // Property binder classes used for driving properties of external objects
+    // Property binder base class
     [System.Serializable]
-    public abstract class StringPropertyBinder
+    public abstract class Vector3PropertyBinder
     {
-        // Enable switch
         public bool Enabled = true;
 
-        // Audio level property (setter only)
-        public string stringProperty
+        public Vector3 vector3Property
         {
-            get { return OnGetLevel(); }
+            get => OnGetProperty();
             set
             {
-                if (Enabled) OnSetLevel(value);
+                if (Enabled) OnSetProperty(value);
             }
         }
 
-        // Binder implementation
-        protected abstract void OnSetLevel(string level);
-        protected abstract string OnGetLevel();
+        protected abstract void OnSetProperty(Vector3 value);
+        protected abstract Vector3 OnGetProperty();
     }
 
-// Generic intermediate implementation
-    public abstract class GenericStringPropertyBinder<T> : StringPropertyBinder
+    public abstract class GenericVector3PropertyBinder<T> : Vector3PropertyBinder
     {
         // Serialized target property information
         public Component Target;
@@ -80,7 +74,7 @@ namespace Normal.ParameterBinder
         // Target property setter
         protected T TargetProperty
         {
-            get { return (T) GetProperty(Target, PropertyName); }
+            get => (T) GetProperty(Target, PropertyName);
             set => SetTargetProperty(value);
         }
 
@@ -112,15 +106,17 @@ namespace Normal.ParameterBinder
         }
     }
 
-//Binder for string Values
-    public sealed class StringValuePropertyBinder : GenericStringPropertyBinder<string>
+    public sealed class Vector3ValuePropertyBinder : GenericVector3PropertyBinder<Vector3>
     {
-        protected override void OnSetLevel(string level)
+        // public float Value0 = 0;
+        // public float Value1 = 1.0f;
+
+        protected override void OnSetProperty(Vector3 value)
         {
-            TargetProperty = level;
+            TargetProperty = value;
         }
 
-        protected override string OnGetLevel()
+        protected override Vector3 OnGetProperty()
         {
             return TargetProperty;
         }

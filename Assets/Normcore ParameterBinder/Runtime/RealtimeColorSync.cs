@@ -26,68 +26,67 @@
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
 #endregion
-
 using Normal.Realtime;
 using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     [RequireComponent(typeof(RealtimeView))]
-    public class RealtimeStringSync : RealtimeComponent<RealtimeStringModel>
+    public class RealtimeColorSync : RealtimeComponent<RealtimeColorModel>
     {
+
         #region Property Binders
 
-        [SerializeReference] [HideInInspector] StringPropertyBinder[] _stringPropertyBinders = null;
+        [SerializeReference] [HideInInspector] ColorPropertyBinder[] _colorPropertyBinders = null;
 
-
-        public StringPropertyBinder[] PropertyBinders
+        public ColorPropertyBinder[] PropertyBinders
         {
-            get => (StringPropertyBinder[]) _stringPropertyBinders.Clone();
-            set => _stringPropertyBinders = value;
+            get => (ColorPropertyBinder[]) _colorPropertyBinders.Clone();
+            set => _colorPropertyBinders = value;
         }
 
         #endregion
 
         // Local Variable which will be synced with the network. 
         // Property binders will subscribe to this value to be in sync. 
-        [HideInInspector] public string localStringValue;
+        [HideInInspector] public Color localColorValue;
 
         #region Normcore Realtime Logic
 
-        protected override void OnRealtimeModelReplaced(RealtimeStringModel previousModel,
-            RealtimeStringModel currentModel)
+        protected override void OnRealtimeModelReplaced(RealtimeColorModel previousModel,
+            RealtimeColorModel currentModel)
         {
             if (previousModel != null)
             {
-                previousModel.stringPropertyDidChange -= ModelOnStringPropertyDidChange;
+                previousModel.colorPropertyDidChange -= ModelOnColorPropertyDidChange;
             }
 
             if (currentModel != null)
             {
                 if (!currentModel.isFreshModel)
                 {
-                    UpdateStringProperty();
+                    UpdateColorProperty();
                 }
 
-                currentModel.stringPropertyDidChange += ModelOnStringPropertyDidChange;
+                currentModel.colorPropertyDidChange += ModelOnColorPropertyDidChange;
             }
         }
 
-        private void UpdateStringProperty()
+        private void UpdateColorProperty()
         {
-            localStringValue = this.model.stringProperty;
-            if (_stringPropertyBinders != null)
+            localColorValue = this.model.colorProperty;
+            if (_colorPropertyBinders != null)
             {
-                foreach (var propertyBinder in _stringPropertyBinders)
+                foreach (var propertyBinder in _colorPropertyBinders)
                 {
-                    propertyBinder.stringProperty = localStringValue;
+                    propertyBinder.colorProperty = localColorValue;
                 }
             }
         }
 
-        private void ModelOnStringPropertyDidChange(RealtimeStringModel normcoreBoolModel, string value)
+        private void ModelOnColorPropertyDidChange(RealtimeColorModel normcoreBoolModel, Color value)
         {
-            UpdateStringProperty();
+            UpdateColorProperty();
         }
 
         #endregion
@@ -96,31 +95,29 @@ namespace Normal.ParameterBinder
 
         private void Awake()
         {
-            if (_stringPropertyBinders != null)
+            if (_colorPropertyBinders != null)
             {
-                localStringValue = _stringPropertyBinders[0].stringProperty;
-                foreach (var boolPropertyBinder in _stringPropertyBinders)
+                localColorValue = _colorPropertyBinders[0].colorProperty;
+                foreach (var boolPropertyBinder in _colorPropertyBinders)
                 {
-                    boolPropertyBinder.stringProperty = localStringValue;
+                    boolPropertyBinder.colorProperty = localColorValue;
                 }
             }
-
-
         }
 
         private void Update()
         {
-            if (_stringPropertyBinders != null)
+            if (_colorPropertyBinders != null)
             {
-                foreach (var propertyBinder in _stringPropertyBinders)
+                foreach (var propertyBinder in _colorPropertyBinders)
                 {
-                    if (propertyBinder.stringProperty != localStringValue ||
-                        (this.model != null && this.model.stringProperty != localStringValue))
+                    if (propertyBinder.colorProperty != localColorValue ||
+                        (this.model != null && this.model.colorProperty != localColorValue))
                     {
-                        localStringValue = propertyBinder.stringProperty;
+                        localColorValue = propertyBinder.colorProperty;
                         if (this.model != null)
                         {
-                            this.model.stringProperty = localStringValue;
+                            this.model.colorProperty = localColorValue;
                         }
                     }
                 }
@@ -129,4 +126,5 @@ namespace Normal.ParameterBinder
 
         #endregion
     }
+
 }

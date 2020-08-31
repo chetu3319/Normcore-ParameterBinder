@@ -27,22 +27,25 @@
 //------------------------------------------------------------------------------ -
 #endregion
 
-using UnityEngine;
 using UnityEditor;
+using UnityEditor.Rendering;
+using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
-    [CustomEditor(typeof(RealtimeVector3Sync))]
-    public class RealtimeVector3SyncEditor : Editor
+    [CustomEditor(typeof(RealtimeBoolSync))]
+    public class RealtimeBoolSyncEditor : Editor
     {
-        private PropertyBinderEditor _vector3PropertyBinderEditor;
+        PropertyBinderEditor _propertyBinderEditor;
+        private PropertyBinderEditor _floatPropertyBinderEditor;
 
         private void OnEnable()
         {
             var finder = new PropertyFinder(serializedObject);
 
-            _vector3PropertyBinderEditor =
-                new PropertyBinderEditor(serializedObject.FindProperty("_vector3PropertyBinders"), "Vector3");
+            _propertyBinderEditor =
+                new PropertyBinderEditor(serializedObject.FindProperty("_boolPropertyBinders"), "bool");
+
 
         }
 
@@ -53,14 +56,15 @@ namespace Normal.ParameterBinder
 
         public override void OnInspectorGUI()
         {
-            RealtimeVector3Sync data = (RealtimeVector3Sync) target;
+            RealtimeBoolSync data = (RealtimeBoolSync) target;
             base.OnInspectorGUI();
-            GUILayout.Label("Local Vector3 Value: " + data.localVector3Value);
+            GUILayout.Label("Bool Value is: " + data.localBoolValue);
+
             if (targets.Length == 1)
             {
-                _vector3PropertyBinderEditor.ShowGUI();
+                _propertyBinderEditor.ShowGUI();
             }
+
         }
     }
 }
-

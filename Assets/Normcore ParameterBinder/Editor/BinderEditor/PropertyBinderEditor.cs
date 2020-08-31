@@ -41,7 +41,7 @@ using UnityEditor;
 // Custom editor for editing property binder list
 //
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     sealed class PropertyBinderEditor
     {

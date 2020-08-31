@@ -26,69 +26,67 @@
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
 #endregion
-
 using Normal.Realtime;
 using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     [RequireComponent(typeof(RealtimeView))]
-    public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
+    public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
     {
 
-        #region Parameter Binding
+        #region Property Binders
 
-        [SerializeReference] [HideInInspector] private Vector3PropertyBinder[] _vector3PropertyBinders = null;
+        [SerializeReference] [HideInInspector] BoolPropertyBinder[] _boolPropertyBinders = null;
 
-        public Vector3PropertyBinder[] Vector3PropertyBinders
+
+        public BoolPropertyBinder[] PropertyBinders
         {
-            get => (Vector3PropertyBinder[]) _vector3PropertyBinders.Clone();
-            set => _vector3PropertyBinders = value;
+            get => (BoolPropertyBinder[]) _boolPropertyBinders.Clone();
+            set => _boolPropertyBinders = value;
         }
-
 
         #endregion
 
         // Local Variable which will be synced with the network. 
         // Property binders will subscribe to this value to be in sync. 
-        [HideInInspector] public Vector3 localVector3Value;
+        [HideInInspector] public bool localBoolValue;
 
         #region Normcore Realtime Logic
 
-        protected override void OnRealtimeModelReplaced(RealtimeVector3Model previousModel,
-            RealtimeVector3Model currentModel)
+        protected override void OnRealtimeModelReplaced(RealtimeBoolModel previousModel, RealtimeBoolModel currentModel)
         {
             if (previousModel != null)
             {
-                previousModel.vector3PropertyDidChange -= ModelOnvector3PropertyDidChange;
+                previousModel.boolPropertyDidChange -= ModelOnboolPropertyDidChange;
             }
 
             if (currentModel != null)
             {
                 if (!currentModel.isFreshModel)
                 {
-                    UpdateVector3Property();
+                    UpdateBoolProperty();
                 }
 
-                currentModel.vector3PropertyDidChange += ModelOnvector3PropertyDidChange;
+                currentModel.boolPropertyDidChange += ModelOnboolPropertyDidChange;
             }
         }
 
-        private void UpdateVector3Property()
+        private void UpdateBoolProperty()
         {
-            localVector3Value = this.model.vector3Property;
-            if (_vector3PropertyBinders != null)
+            localBoolValue = this.model.boolProperty;
+            if (_boolPropertyBinders != null)
             {
-                foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+                foreach (var propertyBinder in _boolPropertyBinders)
                 {
-                    vector3PropertyBinder.vector3Property = localVector3Value;
+                    propertyBinder.boolProperty = localBoolValue;
                 }
             }
         }
 
-        private void ModelOnvector3PropertyDidChange(RealtimeVector3Model realtimeVector3Model, Vector3 value)
+        private void ModelOnboolPropertyDidChange(RealtimeBoolModel normcoreBoolModel, bool value)
         {
-            UpdateVector3Property();
+            UpdateBoolProperty();
         }
 
         #endregion
@@ -97,37 +95,38 @@ namespace Normal.ParameterBinder
 
         private void Awake()
         {
-            if (_vector3PropertyBinders != null)
+            if (_boolPropertyBinders != null)
             {
-                localVector3Value = _vector3PropertyBinders[0].vector3Property;
-                foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+                localBoolValue = _boolPropertyBinders[0].boolProperty;
+                foreach (var boolPropertyBinder in _boolPropertyBinders)
                 {
-                    vector3PropertyBinder.vector3Property = localVector3Value;
+                    boolPropertyBinder.boolProperty = localBoolValue;
                 }
             }
+
+
         }
 
         private void Update()
         {
-            if (_vector3PropertyBinders != null)
+            if (_boolPropertyBinders != null)
             {
-                foreach (var vector3PropertyBinder in _vector3PropertyBinders)
+                foreach (var propertyBinder in _boolPropertyBinders)
                 {
-                    if (vector3PropertyBinder.vector3Property != localVector3Value ||
-                        (this.model != null && this.model.vector3Property != localVector3Value))
+                    if (propertyBinder.boolProperty != localBoolValue ||
+                        (this.model != null && this.model.boolProperty != localBoolValue))
                     {
-                        localVector3Value = vector3PropertyBinder.vector3Property;
+                        localBoolValue = propertyBinder.boolProperty;
                         if (this.model != null)
                         {
-                            this.model.vector3Property = localVector3Value;
+                            this.model.boolProperty = localBoolValue;
                         }
                     }
                 }
             }
         }
 
-
         #endregion
-
     }
+
 }

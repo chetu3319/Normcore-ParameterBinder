@@ -1,5 +1,4 @@
 ﻿#region License
-
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -26,68 +25,69 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
-
 #endregion
 
 using Normal.Realtime;
 using UnityEngine;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     [RequireComponent(typeof(RealtimeView))]
-    public class RealtimeIntSync : RealtimeComponent<RealtimeIntModel>
+    public class RealtimeStringSync : RealtimeComponent<RealtimeStringModel>
     {
         #region Property Binders
 
-        [SerializeReference] [HideInInspector] private IntPropertyBinder[] _intPropertyBinders = null;
+        [SerializeReference] [HideInInspector] StringPropertyBinder[] _stringPropertyBinders = null;
 
-        public IntPropertyBinder[] IntPropertyBinders
+
+        public StringPropertyBinder[] PropertyBinders
         {
-            get => (IntPropertyBinder[]) _intPropertyBinders.Clone();
-            set => _intPropertyBinders = value;
+            get => (StringPropertyBinder[]) _stringPropertyBinders.Clone();
+            set => _stringPropertyBinders = value;
         }
 
         #endregion
 
         // Local Variable which will be synced with the network. 
         // Property binders will subscribe to this value to be in sync. 
-        [HideInInspector] public int localIntValue;
+        [HideInInspector] public string localStringValue;
 
         #region Normcore Realtime Logic
 
-        private void ModelOnintPropertyDidChange(RealtimeIntModel normcoreFloatModel, int value)
-        {
-            UpdateIntProperty();
-        }
-
-        private void UpdateIntProperty()
-        {
-            localIntValue = model.intProperty;
-            if (_intPropertyBinders != null)
-            {
-                foreach (var floatPropertyBinder in _intPropertyBinders)
-                {
-                    floatPropertyBinder.floatProperty = localIntValue;
-                }
-            }
-        }
-
-        protected override void OnRealtimeModelReplaced(RealtimeIntModel previousModel, RealtimeIntModel currentModel)
+        protected override void OnRealtimeModelReplaced(RealtimeStringModel previousModel,
+            RealtimeStringModel currentModel)
         {
             if (previousModel != null)
             {
-                previousModel.intPropertyDidChange -= ModelOnintPropertyDidChange;
+                previousModel.stringPropertyDidChange -= ModelOnStringPropertyDidChange;
             }
 
             if (currentModel != null)
             {
                 if (!currentModel.isFreshModel)
                 {
-                    UpdateIntProperty();
+                    UpdateStringProperty();
                 }
 
-                currentModel.intPropertyDidChange += ModelOnintPropertyDidChange;
+                currentModel.stringPropertyDidChange += ModelOnStringPropertyDidChange;
             }
+        }
+
+        private void UpdateStringProperty()
+        {
+            localStringValue = this.model.stringProperty;
+            if (_stringPropertyBinders != null)
+            {
+                foreach (var propertyBinder in _stringPropertyBinders)
+                {
+                    propertyBinder.stringProperty = localStringValue;
+                }
+            }
+        }
+
+        private void ModelOnStringPropertyDidChange(RealtimeStringModel normcoreBoolModel, string value)
+        {
+            UpdateStringProperty();
         }
 
         #endregion
@@ -96,31 +96,31 @@ namespace Normal.ParameterBinder
 
         private void Awake()
         {
-            // Fetching the value of first binder and syncing it with local as well as other binders. 
-            if (_intPropertyBinders != null)
+            if (_stringPropertyBinders != null)
             {
-                localIntValue = _intPropertyBinders[0].floatProperty;
-                foreach (var floatPropertyBinder in _intPropertyBinders)
+                localStringValue = _stringPropertyBinders[0].stringProperty;
+                foreach (var boolPropertyBinder in _stringPropertyBinders)
                 {
-                    floatPropertyBinder.floatProperty = localIntValue;
+                    boolPropertyBinder.stringProperty = localStringValue;
                 }
             }
+
+
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if (_intPropertyBinders != null)
+            if (_stringPropertyBinders != null)
             {
-                foreach (var floatPropertyBinder in _intPropertyBinders)
+                foreach (var propertyBinder in _stringPropertyBinders)
                 {
-                    if (floatPropertyBinder.Enabled && (floatPropertyBinder.floatProperty != localIntValue ||
-                                                        (model != null && model.intProperty != localIntValue)))
+                    if (propertyBinder.stringProperty != localStringValue ||
+                        (this.model != null && this.model.stringProperty != localStringValue))
                     {
-                        localIntValue = floatPropertyBinder.floatProperty;
-                        if (model != null)
+                        localStringValue = propertyBinder.stringProperty;
+                        if (this.model != null)
                         {
-                            model.intProperty = localIntValue;
+                            this.model.stringProperty = localStringValue;
                         }
                     }
                 }

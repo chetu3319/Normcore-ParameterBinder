@@ -38,7 +38,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Reflection;
 
-namespace Normal.ParameterBinder
+namespace chetu3319.ParameterBinder
 {
     //
 // Property binder classes used for driving properties of external objects
