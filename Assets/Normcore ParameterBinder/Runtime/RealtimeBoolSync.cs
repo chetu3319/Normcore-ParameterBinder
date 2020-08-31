@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -25,7 +26,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
+
 #endregion
+
 using Normal.Realtime;
 using UnityEngine;
 
@@ -34,11 +37,9 @@ namespace chetu3319.ParameterBinder
     [RequireComponent(typeof(RealtimeView))]
     public class RealtimeBoolSync : RealtimeComponent<RealtimeBoolModel>
     {
-
         #region Property Binders
 
         [SerializeReference] [HideInInspector] BoolPropertyBinder[] _boolPropertyBinders = null;
-
 
         public BoolPropertyBinder[] PropertyBinders
         {
@@ -103,8 +104,6 @@ namespace chetu3319.ParameterBinder
                     boolPropertyBinder.boolProperty = localBoolValue;
                 }
             }
-
-
         }
 
         private void Update()
@@ -128,5 +127,4 @@ namespace chetu3319.ParameterBinder
 
         #endregion
     }
-
 }

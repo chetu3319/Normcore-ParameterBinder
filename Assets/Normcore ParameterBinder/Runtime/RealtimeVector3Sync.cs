@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -25,6 +26,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
+
 #endregion
 
 using Normal.Realtime;
@@ -35,7 +37,6 @@ namespace chetu3319.ParameterBinder
     [RequireComponent(typeof(RealtimeView))]
     public class RealtimeVector3Sync : RealtimeComponent<RealtimeVector3Model>
     {
-
         #region Parameter Binding
 
         [SerializeReference] [HideInInspector] private Vector3PropertyBinder[] _vector3PropertyBinders = null;
@@ -45,7 +46,6 @@ namespace chetu3319.ParameterBinder
             get => (Vector3PropertyBinder[]) _vector3PropertyBinders.Clone();
             set => _vector3PropertyBinders = value;
         }
-
 
         #endregion
 
@@ -126,8 +126,6 @@ namespace chetu3319.ParameterBinder
             }
         }
 
-
         #endregion
-
     }
 }

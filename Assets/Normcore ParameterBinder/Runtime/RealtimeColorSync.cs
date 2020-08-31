@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -25,7 +26,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
+
 #endregion
+
 using Normal.Realtime;
 using UnityEngine;
 
@@ -34,7 +37,6 @@ namespace chetu3319.ParameterBinder
     [RequireComponent(typeof(RealtimeView))]
     public class RealtimeColorSync : RealtimeComponent<RealtimeColorModel>
     {
-
         #region Property Binders
 
         [SerializeReference] [HideInInspector] ColorPropertyBinder[] _colorPropertyBinders = null;
@@ -126,5 +128,4 @@ namespace chetu3319.ParameterBinder
 
         #endregion
     }
-
 }

@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -25,9 +26,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
+
 #endregion
 
-using Normal.Realtime; 
+using Normal.Realtime;
 using UnityEngine;
 
 namespace chetu3319.ParameterBinder
@@ -69,8 +71,6 @@ namespace chetu3319.ParameterBinder
         {
             UpdateFloatProperty();
         }
-
-
 
         protected override void OnRealtimeModelReplaced(RealtimeFloatModel previousModel,
             RealtimeFloatModel currentModel)
@@ -128,7 +128,5 @@ namespace chetu3319.ParameterBinder
         }
 
         #endregion
-
     }
-
 }

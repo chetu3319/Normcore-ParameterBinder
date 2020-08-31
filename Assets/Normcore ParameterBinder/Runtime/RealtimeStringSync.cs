@@ -1,4 +1,5 @@
 ﻿#region License
+
 //------------------------------------------------------------------------------ -
 // Normcore-ParameterBinder
 // https://github.com/chetu3319/Normcore-ParameterBinder
@@ -25,6 +26,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //------------------------------------------------------------------------------ -
+
 #endregion
 
 using Normal.Realtime;
@@ -38,7 +40,6 @@ namespace chetu3319.ParameterBinder
         #region Property Binders
 
         [SerializeReference] [HideInInspector] StringPropertyBinder[] _stringPropertyBinders = null;
-
 
         public StringPropertyBinder[] PropertyBinders
         {
@@ -104,8 +105,6 @@ namespace chetu3319.ParameterBinder
                     boolPropertyBinder.stringProperty = localStringValue;
                 }
             }
-
-
         }
 
         private void Update()
