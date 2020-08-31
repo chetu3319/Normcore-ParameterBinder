@@ -41,7 +41,7 @@ To simplify, this further simplifies the simplest networking framework. That sim
 
 3. **Can I attach** `n` **different variables to a single** `Realtime<T>Sync` **script?**
 
-	If you intend to store different values to those variables, then use `n` different scripts. If those `n` variables will have the same value, then attach them to a single script and use binders. 
+	If you intend to store different values to these `n` different variables, then use `n` different `Realtime<T>Sync` scripts. If these `n` different variables will have the same value, then attach them to a single `Realtime<T>Sync` script using binders. 
 
 4. **What is the** `Float to Vector3 Property Binder`**? How does it work?**
 
